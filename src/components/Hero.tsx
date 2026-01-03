@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const capabilities = [
-  "ROS",
+  "ROS/ROS2",
+  "Perception",
+  "Mapping",
   "Navigation",
-  "SLAM",
-  "Sensor Fusion",
-  "Simulation",
-  "Deployment",
+  "Point Clouds",
+  "Real Deployment",
 ];
 
 export function Hero() {
@@ -33,7 +33,7 @@ export function Hero() {
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl">
-            I build reliable autonomous systems using ROS, perception pipelines, and AI-driven decision layers.
+            Building real-world autonomous systems with ROS2, perception pipelines, and navigation stacks deployed on actual robots.
           </p>
 
           <div className="flex flex-wrap gap-2 mb-12">

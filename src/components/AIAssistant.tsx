@@ -10,39 +10,42 @@ interface Message {
 
 const initialMessage: Message = {
   role: "assistant",
-  content: "I can answer questions about my resume, projects, and technical experience.",
+  content: "I answer questions using my resume, projects, and professional experience in robotics and ROS development.",
 };
 
 // Mock responses for demo - would be replaced with actual AI backend
 const getResponse = (question: string): string => {
   const q = question.toLowerCase();
   
-  if (q.includes("ros") || q.includes("experience")) {
-    return "I have 5+ years of experience with ROS and ROS 2, working on perception, navigation, and manipulation systems. My work spans warehouse automation, agricultural robotics, and industrial pick-and-place applications.";
+  if (q.includes("ros") || q.includes("experience") || q.includes("work")) {
+    return "I work as a ROS Developer at Spotless AI, building perception, mapping, and navigation systems. I develop ROS nodes for sensor synchronization, point cloud processing, occupancy grid updates, and semantic mapping. I also integrate navigation stacks using planners like Move Base, SPBL, and DWB.";
   }
-  if (q.includes("navigation") || q.includes("nav2")) {
-    return "I've implemented Nav2-based navigation stacks for warehouse AMRs, including custom costmap layers, multi-robot coordination, and real-time path replanning at 10Hz update rates.";
+  if (q.includes("navigation") || q.includes("nav") || q.includes("planner")) {
+    return "I integrate navigation stacks using Move Base, SPBL, and DWB planners for autonomous robot movement. This includes publishing costmaps, handling real-time replanning, and debugging planner failures under dynamic conditions.";
   }
-  if (q.includes("slam") || q.includes("localization")) {
-    return "My SLAM experience includes sensor fusion with EKF, combining RTK-GPS, wheel encoders, IMU, and LiDAR. I've handled challenging outdoor environments with GPS multipath and seasonal appearance changes.";
+  if (q.includes("mapping") || q.includes("slam") || q.includes("localization")) {
+    return "I build mapping pipelines including Occupancy Grid Maps, Gmapping, Semantic Grids, and edge/corner detection. I also work on map modification and smoothing for deployed systems.";
   }
-  if (q.includes("perception") || q.includes("vision") || q.includes("camera")) {
-    return "I've built perception pipelines using YOLOv8, point cloud segmentation, and 6-DOF pose estimation. My work includes handling reflective objects, domain randomization for sim-to-real, and sub-3-second cycle times.";
+  if (q.includes("perception") || q.includes("vision") || q.includes("camera") || q.includes("lidar")) {
+    return "I develop perception pipelines using OpenCV, YOLO, and point cloud data. My work includes RGB + Depth synchronization, real-time point cloud processing, object detection, and image segmentation for robot systems.";
   }
-  if (q.includes("simulation") || q.includes("gazebo") || q.includes("isaac")) {
-    return "I've developed simulation-to-real transfer frameworks using Gazebo and Isaac Sim, including parameterized sensor models, automated regression testing, and CI/CD pipelines with simulation tests.";
+  if (q.includes("project") || q.includes("competition")) {
+    return "Key projects include my work at Spotless AI (deployed ROS systems), Krishi Bot (E-Yantra finalist, arm manipulation + vision), Medical Drone (emergency response CV), and Flipkart GRID 2.0 (image segmentation, Level 2 shortlist).";
   }
-  if (q.includes("language") || q.includes("programming") || q.includes("python") || q.includes("c++")) {
-    return "Primary languages: C++ for performance-critical nodes and Python for prototyping and tooling. I also work with Docker for deployment, pytest for testing, and GitHub Actions for CI/CD.";
+  if (q.includes("language") || q.includes("programming") || q.includes("python") || q.includes("c++") || q.includes("skill")) {
+    return "Primary languages: Python and C++ for ROS development. I also work with OpenCV, YOLO, LiDAR processing, Git, MATLAB, and tools like Visual Studio Code and Ubuntu. Simulation tools include Gazebo and Blender.";
   }
-  if (q.includes("education") || q.includes("degree") || q.includes("university")) {
-    return "MS in Robotics with focus on autonomous systems. Coursework covered state estimation, motion planning, computer vision, and machine learning for robotics.";
+  if (q.includes("education") || q.includes("degree") || q.includes("university") || q.includes("college")) {
+    return "B.E. Mechatronics from Bannari Amman Institute of Technology, graduating April 2025. CGPA: 7.93 (till 5th semester).";
+  }
+  if (q.includes("achievement") || q.includes("award") || q.includes("hackathon")) {
+    return "Smart India Hackathon Winner (2021-2022), Ignite Best Project Award Winner, BRICS Robotics Competition Runner-up, E-Yantra Robotics Competition Finalist, and Flipkart GRID 2.0 Level 2 shortlist.";
   }
   if (q.includes("contact") || q.includes("email") || q.includes("reach")) {
-    return "You can reach me via email at engineer@example.com or connect on LinkedIn. Links are in the Contact section below.";
+    return "You can reach me via email at sutharsanmail311@gmail.com or call +91 8438536404. Links are in the Contact section below.";
   }
   
-  return "I can answer questions about my ROS experience, navigation systems, SLAM, perception pipelines, simulation, and technical skills. What would you like to know?";
+  return "I can answer questions about my ROS development experience at Spotless AI, perception and mapping work, competition projects, technical skills, and education. What would you like to know?";
 };
 
 export function AIAssistant() {

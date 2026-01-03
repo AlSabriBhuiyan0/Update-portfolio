@@ -4,21 +4,21 @@ import { Mail, Github, Linkedin } from "lucide-react";
 const links = [
   {
     label: "Email",
-    href: "mailto:engineer@example.com",
+    href: "mailto:sutharsanmail311@gmail.com",
     icon: Mail,
-    value: "engineer@example.com",
+    value: "sutharsanmail311@gmail.com",
   },
   {
     label: "GitHub",
     href: "https://github.com",
     icon: Github,
-    value: "github.com/engineer",
+    value: "github.com/sutharsan",
   },
   {
     label: "LinkedIn",
     href: "https://linkedin.com",
     icon: Linkedin,
-    value: "linkedin.com/in/engineer",
+    value: "linkedin.com/in/sutharsan",
   },
 ];
 

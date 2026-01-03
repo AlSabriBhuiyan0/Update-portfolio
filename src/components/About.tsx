@@ -16,14 +16,15 @@ export function About() {
           </h2>
           
           <p className="text-lg text-foreground leading-relaxed mb-6">
-            I design autonomy stacks that remain stable under noise, drift, and imperfect sensors. 
-            My work focuses on real-world deployment—not just simulation.
+            I develop perception, mapping, and navigation systems for real robots using ROS and ROS2. 
+            At Spotless AI, I build pipelines that process LiDAR, depth cameras, and point clouds into 
+            actionable costmaps and semantic grids.
           </p>
           
           <p className="text-muted-foreground leading-relaxed">
-            With experience across perception, navigation, and motion planning, I prioritize 
-            system clarity and debuggability. When something fails at 2 AM in a warehouse, 
-            the logs should tell you why.
+            My work involves debugging sensor noise, transformation mismatches, and planner failures 
+            on deployed hardware. I write modular code that interacts cleanly with ROS topics, services, 
+            TFs, and custom messages—systems that need to work reliably, not just in simulation.
           </p>
         </motion.div>
       </div>

@@ -51,7 +51,7 @@ export function Hero() {
   return (
     <section className="h-screen w-full flex flex-col justify-center">
       <div className="w-full h-full">
-        <div className="w-full h-full bg-black/[0.96] relative overflow-hidden">
+        <div className="w-full h-full bg-black relative overflow-hidden">
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
           />

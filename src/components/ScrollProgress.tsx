@@ -31,8 +31,11 @@ export function ScrollProgress() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-transparent pointer-events-none">
       <motion.div
-        className="h-full bg-primary"
-        style={{ width: `${scrollProgress}%` }}
+        className="h-full"
+        style={{ 
+          width: `${scrollProgress}%`,
+          background: 'linear-gradient(90deg, hsl(217, 91%, 50%) 0%, hsl(217, 91%, 60%) 50%, hsl(217, 91%, 70%) 100%)'
+        }}
         initial={{ width: 0 }}
         animate={{ width: `${scrollProgress}%` }}
         transition={{ duration: 0.1, ease: "easeOut" }}

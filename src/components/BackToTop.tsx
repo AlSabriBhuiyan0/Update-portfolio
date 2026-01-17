@@ -41,13 +41,17 @@ export function BackToTop() {
           onClick={scrollToTop}
           className={cn(
             "fixed bottom-20 right-6 z-50",
+            "gradient-button gradient-button-variant",
             "p-3 rounded-full",
-            "bg-primary text-primary-foreground",
+            "text-white",
             "shadow-lg hover:shadow-xl",
-            "hover:bg-primary/90",
             "transition-all duration-200",
-            "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+            "focus:outline-none focus:ring-0",
+            "active:outline-none active:ring-0",
+            "-webkit-tap-highlight-color:transparent",
+            "min-w-0 w-12 h-12 flex items-center justify-center"
           )}
+          style={{ WebkitTapHighlightColor: 'transparent' }}
           aria-label="Back to top"
         >
           <ArrowUp size={20} />

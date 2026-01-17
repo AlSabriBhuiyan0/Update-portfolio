@@ -57,7 +57,7 @@ function GlowingCard({ children }: { children: React.ReactNode }) {
 
 export function About() {
   return (
-    <section id="about" className="py-24 border-t border-border">
+    <section id="about" className="py-24 border-t border-border" aria-labelledby="about-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}

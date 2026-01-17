@@ -16,13 +16,13 @@ const links = [
   },
   {
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/sutharsan-311",
     icon: Github,
-    value: "github.com/sutharsan",
+    value: "github.com/sutharsan-311",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/in/sutharsan",
     icon: Linkedin,
     value: "linkedin.com/in/sutharsan",
   },
@@ -77,7 +77,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 border-t border-border">
+    <section id="contact" className="py-24 border-t border-border" aria-labelledby="contact-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -85,7 +85,7 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.15 }}
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
+          <h2 id="contact-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Get in Touch With Me
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
@@ -112,7 +112,8 @@ export function Contact() {
                           href={link.href}
                           target={link.href.startsWith("mailto:") || link.href === "#" ? undefined : "_blank"}
                           rel={link.href.startsWith("mailto:") || link.href === "#" ? undefined : "noopener noreferrer"}
-                          className="flex items-center gap-4 text-foreground hover:text-primary transition-colors group"
+                          aria-label={`Contact via ${link.label}: ${link.value}`}
+                          className="flex items-center gap-4 text-foreground hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg transition-colors group"
                         >
                           <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                           <div>
@@ -137,7 +138,7 @@ export function Contact() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-grow">
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-foreground">
                         Your Name
@@ -148,6 +149,7 @@ export function Contact() {
                         placeholder="John Doe"
                         required
                         className="bg-background"
+                        aria-required="true"
                       />
                     </div>
                     <div className="space-y-2">
@@ -161,6 +163,7 @@ export function Contact() {
                         placeholder="john@example.com"
                         required
                         className="bg-background"
+                        aria-required="true"
                       />
                     </div>
                     <div className="space-y-2">
@@ -174,9 +177,15 @@ export function Contact() {
                         required
                         rows={5}
                         className="bg-background resize-none"
+                        aria-required="true"
                       />
                     </div>
-                    <GradientButton type="submit" variant="variant" className="w-full min-w-0">
+                    <GradientButton 
+                      type="submit" 
+                      variant="variant" 
+                      className="w-full min-w-0"
+                      aria-label="Submit contact form"
+                    >
                       <Send className="w-4 h-4 mr-2" />
                       Send Message
                     </GradientButton>

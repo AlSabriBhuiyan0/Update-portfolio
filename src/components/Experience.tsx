@@ -31,7 +31,7 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 border-t border-border">
+    <section id="experience" className="py-24 border-t border-border" aria-labelledby="experience-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -40,7 +40,7 @@ export function Experience() {
           transition={{ duration: 0.15 }}
           className="max-w-3xl"
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-12">
+          <h2 id="experience-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-12">
             Work Experience
           </h2>
           

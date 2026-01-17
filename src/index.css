@@ -78,18 +78,20 @@
 
   html {
     scroll-behavior: smooth;
+    @apply bg-black;
   }
 
   body {
     @apply bg-black text-foreground font-sans antialiased;
   }
-  
-  html {
-    @apply bg-black;
-  }
 
   ::selection {
     @apply bg-primary/20 text-foreground;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
 }
 

@@ -56,7 +56,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 border-t border-border">
+    <section id="projects" className="py-24 border-t border-border" aria-labelledby="projects-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -64,7 +64,7 @@ export function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.15 }}
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
+          <h2 id="projects-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Featured Work
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">

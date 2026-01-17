@@ -68,7 +68,7 @@ const skillCategories = [
 
 export function Skills() {
   return (
-    <section id="skills" className="py-24 border-t border-border">
+    <section id="skills" className="py-24 border-t border-border" aria-labelledby="skills-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -76,7 +76,7 @@ export function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.15 }}
         >
-          <h2 className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
+          <h2 id="skills-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
             Technical Stack
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">

@@ -31,17 +31,31 @@ export function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const headerOffset = 100;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const scrollToProjects = () => {
-    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("projects");
   };
 
   const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("contact");
   };
 
   const downloadResume = () => {
     const link = document.createElement("a");
-    link.href = "/resume.pdf";
+    link.href = "/system-focus/resume.pdf";
     link.download = "Sutharsan_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -98,10 +112,17 @@ export function Hero() {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
-                  <GradientButton onClick={scrollToProjects}>
+                  <GradientButton 
+                    onClick={scrollToProjects}
+                    aria-label="Scroll to projects section"
+                  >
                     View Projects
                   </GradientButton>
-                  <GradientButton variant="variant" onClick={scrollToContact}>
+                  <GradientButton 
+                    variant="variant" 
+                    onClick={scrollToContact}
+                    aria-label="Scroll to contact section"
+                  >
                     Let's Connect
                   </GradientButton>
                 </div>

@@ -38,6 +38,12 @@
     --surface-elevated: 220 16% 9%;
     --text-secondary: 218 11% 65%;
     --accent-glow: 217 91% 60%;
+    
+    /* Accent colors for content types */
+    --accent-primary: 217 91% 60%;
+    --accent-secondary: 190 90% 50%;
+    --accent-tertiary: 150 90% 50%;
+    --accent-warning: 45 90% 60%;
   }
 
   .dark {
@@ -81,6 +87,21 @@
     @apply bg-black;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   body {
     @apply bg-black text-foreground font-sans antialiased;
   }
@@ -89,9 +110,12 @@
     @apply bg-primary/20 text-foreground;
   }
 
-  /* Focus styles for accessibility */
+  /* Focus styles for accessibility - enhanced visibility */
   *:focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: hsl(var(--primary));
   }
 }
 
@@ -102,6 +126,26 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-shimmer,
+    .animate-pulse {
+      animation: none;
+    }
   }
 }
 
@@ -240,6 +284,17 @@
       --stop-5 0.5s;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .gradient-button {
+      transition: none;
+    }
+    
+    .gradient-button:hover {
+      --pos-x: 11.14%;
+      --pos-y: 140%;
+    }
+  }
+
   .gradient-button::before {
     content: '';
     position: absolute;
@@ -334,5 +389,37 @@
     --border-angle: 165deg;
     --border-color-1: hsla(170, 100%, 70%, 0.2);
     --border-color-2: hsla(170, 90%, 60%, 0.75);
+  }
+
+  /* Section background patterns */
+  .section-about {
+    background: radial-gradient(circle at 50% 0%, rgba(33, 150, 243, 0.03) 0%, transparent 50%);
+  }
+
+  .section-experience {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 188, 212, 0.02) 50%, transparent 100%);
+  }
+
+  .section-skills {
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0, 255, 255, 0.01) 10px,
+        rgba(0, 255, 255, 0.01) 20px
+      );
+  }
+
+  .section-projects {
+    background-image: 
+      linear-gradient(rgba(156, 39, 176, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(156, 39, 176, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  .section-contact {
+    background: radial-gradient(ellipse at top left, rgba(76, 175, 80, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(76, 175, 80, 0.03) 0%, transparent 50%);
   }
 }

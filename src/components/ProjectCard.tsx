@@ -65,7 +65,12 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
           value={value}
           className="border-0 bg-transparent data-[state=open]:bg-transparent"
         >
-          <AccordionTrigger className="w-full px-6 py-6 text-left hover:bg-secondary/30 transition-colors duration-150 hover:no-underline">
+          <AccordionTrigger 
+            id={`${value}-trigger`}
+            className="w-full px-6 py-6 text-left hover:bg-secondary/30 transition-colors duration-150 hover:no-underline"
+            aria-expanded={value === "project-0" || value === "project-1" || value === "project-2" ? undefined : false}
+            aria-controls={`${value}-content`}
+          >
             <div className="flex-1 min-w-0 text-left">
               <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2 leading-tight">
                 {project.title}
@@ -76,7 +81,12 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
             </div>
           </AccordionTrigger>
 
-          <AccordionContent className="px-6 pb-6 pt-2 border-t border-border/50">
+          <AccordionContent 
+            id={`${value}-content`}
+            className="px-6 pb-6 pt-2 border-t border-border/50"
+            role="region"
+            aria-labelledby={`${value}-trigger`}
+          >
             <div className="space-y-6 pt-4">
               <div>
                 <h4 className="text-sm font-mono text-muted-foreground uppercase tracking-wider mb-3">

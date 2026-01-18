@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SplineScene } from "@/components/ui/spline";
@@ -26,6 +26,13 @@ const rotatingTitles = [
  */
 export function Hero() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -67,11 +74,12 @@ export function Hero() {
   };
 
   return (
-    <section className="h-screen w-full flex flex-col justify-center">
+    <section ref={heroRef} className="h-screen w-full flex flex-col justify-center" role="banner" aria-label="Hero section">
       <div className="w-full h-full">
         <div className="w-full h-full bg-black relative overflow-hidden">
           <Spotlight
             className="-top-40 left-0 md:left-60 md:-top-20"
+            aria-hidden={true}
           />
           
           <div className="flex h-full">
@@ -141,12 +149,21 @@ export function Hero() {
             </div>
 
             {/* Right content - 3D Robot */}
-            <div className="flex-1 relative">
+            <motion.div 
+              className="flex-1 relative"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{
+                y: y,
+                opacity: opacity,
+              }}
+            >
               <SplineScene 
                 scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
                 className="w-full h-full"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

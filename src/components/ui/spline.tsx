@@ -8,18 +8,27 @@ interface SplineSceneProps {
   className?: string
 }
 
-function LoadingSpinner() {
+function LoadingSkeleton() {
   return (
-    <div className="w-full h-full flex items-center justify-center bg-black">
-      <div className="flex flex-col items-center gap-4">
-        <div className="relative">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-primary/20"></div>
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-primary absolute top-0 left-0"></div>
-        </div>
-        <p className="text-sm text-muted-foreground font-mono">Loading 3D model...</p>
+    <div className="w-full h-full bg-black relative overflow-hidden" aria-label="Loading 3D model" role="status" aria-live="polite">
+      {/* Skeleton matching scene dimensions */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-900">
+        {/* Animated gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent animate-shimmer" />
+      </div>
+      {/* Subtle pulsing effect */}
+      <div className="absolute inset-0 bg-primary/5 animate-pulse" />
+      {/* Loading indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 text-xs text-muted-foreground font-mono">
+        <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+        <span>Loading 3D model...</span>
       </div>
     </div>
   )
+}
+
+function LoadingSpinner() {
+  return <LoadingSkeleton />;
 }
 
 function ErrorFallback() {
@@ -53,8 +62,8 @@ function SplineWrapper({ scene, className }: SplineSceneProps) {
   return (
     <div className="w-full h-full relative">
       {isLoading && (
-        <div className="absolute inset-0 z-10">
-          <LoadingSpinner />
+        <div className="absolute inset-0 z-10" aria-live="polite" aria-label="Loading 3D scene">
+          <LoadingSkeleton />
         </div>
       )}
       <Spline

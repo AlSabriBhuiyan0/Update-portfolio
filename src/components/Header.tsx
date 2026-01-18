@@ -114,7 +114,7 @@ export function Header() {
   };
 
   return (
-    <>
+    <nav id="navigation" role="navigation" aria-label="Main navigation">
       {/* Mobile Hamburger Menu */}
       <div className="fixed top-4 left-4 z-50 md:hidden">
         <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -153,7 +153,7 @@ export function Header() {
 
       {/* Desktop Navigation */}
       <div className="fixed bottom-0 sm:top-0 left-1/2 -translate-x-1/2 z-50 mb-6 sm:pt-6 pointer-events-none hidden md:block">
-        <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg pointer-events-auto">
+        <div className="flex items-center gap-3 bg-background/5 border border-border backdrop-blur-lg py-1 px-1 rounded-full shadow-lg pointer-events-auto" role="navigation" aria-label="Main navigation">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeTab === item.name;
@@ -210,6 +210,6 @@ export function Header() {
           </a>
         </div>
       </div>
-    </>
+    </nav>
   );
 }

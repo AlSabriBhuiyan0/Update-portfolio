@@ -13,12 +13,26 @@ import { Stats } from "@/components/Stats";
 const Index = () => {
   return (
     <>
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-      >
-        Skip to main content
-      </a>
+      <div className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:top-4 focus-within:left-4 focus-within:z-50 focus-within:flex focus-within:flex-col focus-within:gap-2">
+        <a
+          href="#main-content"
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg outline-none ring-2 ring-primary ring-offset-2 ring-offset-background focus:not-sr-only"
+        >
+          Skip to main content
+        </a>
+        <a
+          href="#navigation"
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg outline-none ring-2 ring-primary ring-offset-2 ring-offset-background focus:not-sr-only"
+        >
+          Skip to navigation
+        </a>
+        <a
+          href="#footer"
+          className="px-4 py-2 bg-primary text-primary-foreground rounded-lg outline-none ring-2 ring-primary ring-offset-2 ring-offset-background focus:not-sr-only"
+        >
+          Skip to footer
+        </a>
+      </div>
       <main id="main-content" className="min-h-screen w-full bg-black">
         <ScrollProgress />
         <Header />

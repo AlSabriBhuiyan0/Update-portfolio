@@ -72,7 +72,7 @@ const skillCategories = [
  */
 export function Skills() {
   return (
-    <section id="skills" className="py-24 border-t border-border" aria-labelledby="skills-heading">
+    <section id="skills" className="py-28 border-t border-border section-skills" role="region" aria-labelledby="skills-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -87,9 +87,31 @@ export function Skills() {
             A comprehensive toolkit for building intelligent robotic systems
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
             {skillCategories.map((category, index) => (
-              <div key={index} className="space-y-3">
+              <motion.div 
+                key={index} 
+                className="space-y-3"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                transition={{ duration: 0.4 }}
+              >
                 <h3 className="text-base font-semibold text-foreground">
                   {category.title}
                 </h3>
@@ -97,15 +119,18 @@ export function Skills() {
                   {category.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs text-muted-foreground font-mono px-2.5 py-1 bg-secondary rounded border border-border hover:border-primary/50 transition-colors"
+                      className="group text-xs text-muted-foreground font-mono px-2.5 py-1 bg-secondary rounded border border-border hover:border-primary/50 hover:bg-primary/5 hover:scale-105 hover:text-foreground transition-all duration-200 cursor-default"
+                      tabIndex={0}
+                      role="text"
+                      aria-label={`Skill: ${skill}`}
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

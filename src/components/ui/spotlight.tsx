@@ -7,12 +7,14 @@ type SpotlightProps = {
   className?: string;
   size?: number;
   springOptions?: SpringOptions;
+  'aria-hidden'?: boolean;
 };
 
 export function Spotlight({
   className,
   size = 200,
   springOptions = { bounce: 0 },
+  'aria-hidden': ariaHidden,
 }: SpotlightProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -76,6 +78,7 @@ export function Spotlight({
         left: spotlightLeft,
         top: spotlightTop,
       }}
+      aria-hidden={ariaHidden}
     />
   );
 }

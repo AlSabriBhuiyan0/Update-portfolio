@@ -3,10 +3,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Skeleton } from "@/components/ui/skeleton";
 import { initWebVitals } from "@/lib/web-vitals";
+import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -27,7 +29,48 @@ const PageLoader = () => (
  * App component - Root component of the application.
  * Sets up routing, error boundaries, providers, and performance monitoring.
  */
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route 
+          path="/" 
+          element={
+            <motion.div
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={prefersReducedMotion ? {} : { opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <Index />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="*" 
+          element={
+            <motion.div
+              initial={prefersReducedMotion ? {} : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={prefersReducedMotion ? {} : { opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <NotFound />
+            </motion.div>
+          } 
+        />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 const App = () => {
+  // Initialize keyboard shortcuts
+  useKeyboardShortcuts();
+
   useEffect(() => {
     // Initialize Web Vitals tracking for performance monitoring
     initWebVitals().catch(console.error);
@@ -41,11 +84,7 @@ const App = () => {
           <Sonner />
           <BrowserRouter basename="/system-focus">
             <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <AnimatedRoutes />
             </Suspense>
           </BrowserRouter>
         </TooltipProvider>

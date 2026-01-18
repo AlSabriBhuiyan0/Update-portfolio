@@ -66,7 +66,7 @@ const projects = [
  */
 export function Projects() {
   return (
-    <section id="projects" className="py-24 border-t border-border" aria-labelledby="projects-heading">
+    <section id="projects" className="py-28 border-t border-border section-projects" role="region" aria-labelledby="projects-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -81,16 +81,39 @@ export function Projects() {
             A selection of robotics projects showcasing autonomous systems, perception, and intelligent solutions
           </p>
           
-          <Accordion type="single" collapsible className="space-y-4 md:space-y-6">
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={project.title}
-                project={project}
-                value={`project-${index}`}
-                featured={true}
-              />
-            ))}
-          </Accordion>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+          >
+            <Accordion type="single" collapsible className="space-y-4 md:space-y-6">
+              {projects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <ProjectCard
+                    project={project}
+                    value={`project-${index}`}
+                    featured={true}
+                  />
+                </motion.div>
+              ))}
+            </Accordion>
+          </motion.div>
         </motion.div>
       </div>
     </section>

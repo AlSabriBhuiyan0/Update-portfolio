@@ -111,7 +111,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 border-t border-border" aria-labelledby="contact-heading">
+    <section id="contact" className="py-32 border-t border-border section-contact" role="region" aria-labelledby="contact-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -173,6 +173,10 @@ export function Contact() {
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contact form">
+                    <div aria-live="polite" aria-atomic="true" className="sr-only">
+                      {submitStatus.type === 'success' && submitStatus.message}
+                      {submitStatus.type === 'error' && submitStatus.message}
+                    </div>
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-foreground">
                         Your Name
@@ -184,7 +188,9 @@ export function Contact() {
                         required
                         className="bg-background"
                         aria-required="true"
+                        aria-describedby="name-description"
                       />
+                      <span id="name-description" className="sr-only">Enter your full name</span>
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="email" className="text-sm font-medium text-foreground">
@@ -198,7 +204,9 @@ export function Contact() {
                         required
                         className="bg-background"
                         aria-required="true"
+                        aria-describedby="email-description"
                       />
+                      <span id="email-description" className="sr-only">Enter your email address for response</span>
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="message" className="text-sm font-medium text-foreground">
@@ -212,7 +220,9 @@ export function Contact() {
                         rows={5}
                         className="bg-background resize-none"
                         aria-required="true"
+                        aria-describedby="message-description"
                       />
+                      <span id="message-description" className="sr-only">Enter your message or question</span>
                     </div>
                     <GradientButton 
                       type="submit" 
@@ -221,11 +231,16 @@ export function Contact() {
                       aria-label="Submit contact form"
                       disabled={isSubmitting}
                     >
-                      <Send className="w-4 h-4 mr-2" />
+                      <Send className="w-4 h-4 mr-2" aria-hidden="true" />
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </GradientButton>
                     {submitStatus.type && (
-                      <p className={`text-xs text-center ${submitStatus.type === 'success' ? 'text-green-500' : 'text-red-500'}`}>
+                      <p 
+                        className={`text-xs text-center ${submitStatus.type === 'success' ? 'text-green-500' : 'text-red-500'}`}
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                      >
                         {submitStatus.message}
                       </p>
                     )}

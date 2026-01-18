@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
-import { Map, Scan, Settings, Wrench } from "lucide-react";
+import { Map, Scan, Settings, Wrench, Target, BookOpen, Heart, Code2 } from "lucide-react";
 
 const features = [
   {
@@ -60,14 +60,26 @@ function GlowingCard({ children }: { children: React.ReactNode }) {
  * Features animated cards with icons showcasing key skills in robotics, perception, and navigation.
  */
 export function About() {
+  const aboutRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: aboutRef,
+    offset: ["start end", "end start"]
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
-    <section id="about" className="py-24 border-t border-border" aria-labelledby="about-heading">
-      <div className="container">
+    <section ref={aboutRef} id="about" className="py-28 border-t border-border section-about relative overflow-hidden" role="region" aria-labelledby="about-heading">
+      <motion.div 
+        className="absolute inset-0 opacity-30 pointer-events-none"
+        style={{ y: backgroundY }}
+        aria-hidden="true"
+      />
+      <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.15 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             <div className="lg:col-span-2 space-y-6">
@@ -75,13 +87,55 @@ export function About() {
                 I'm a Junior ROS2 Developer working on <strong>autonomous mobile robots</strong> in production environments. My work sits at the intersection of <strong>robot perception, navigation, and hardware integration</strong>, where theory meets noisy sensors and real world constraints.
               </p>
               
+              <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
+                <div className="h-px flex-1 bg-border" />
+                <Code2 className="w-5 h-5" aria-hidden="true" />
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              
               <p className="text-foreground leading-relaxed">
                 I've built systems using <strong>Nav2 for autonomous navigation</strong>, <strong>ros2_control for hardware interfacing</strong>, and perception pipelines combining <strong>LiDAR, RGB-D cameras, OpenCV, YOLO, and point clouds</strong>. I'm comfortable debugging tf2 trees, tuning planners, optimizing CPU usage, and shipping code that runs on real robots not just simulations.
               </p>
               
-              <p className="text-muted-foreground leading-relaxed italic">
-                I care about systems that work reliably, not demos that look good once.
-              </p>
+              <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
+                <div className="h-px flex-1 bg-border" />
+                <Target className="w-5 h-5" aria-hidden="true" />
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              
+              <div className="bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
+                <p className="text-foreground leading-relaxed italic">
+                  I care about systems that work reliably, not demos that look good once.
+                </p>
+              </div>
+              
+              <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
+                <div className="h-px flex-1 bg-border" />
+                <Heart className="w-5 h-5" aria-hidden="true" />
+                <div className="h-px flex-1 bg-border" />
+              </div>
+              
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-base font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Target className="w-4 h-4 text-primary" aria-hidden="true" />
+                    What Drives Me
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    I'm passionate about building robots that work in the real world. The challenge of making autonomous systems reliable under unpredictable conditions—sensor noise, hardware failures, environmental changes—is what keeps me motivated. Every bug fixed and every optimization made brings us closer to robots that truly help people.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-base font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <BookOpen className="w-4 h-4 text-primary" aria-hidden="true" />
+                    My Approach
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    I believe in iterative development, thorough testing, and learning from failures. I start with simulations, validate in controlled environments, then deploy to real robots. Debugging on actual hardware teaches you things simulations never can. I document everything, share knowledge with the team, and always ask "what could go wrong?"
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Education Card */}

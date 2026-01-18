@@ -1,5 +1,20 @@
 import { motion } from "framer-motion";
 
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const staggerItem = {
+  hidden: { opacity: 0, x: -20 },
+  show: { opacity: 1, x: 0 },
+};
+
 const experiences = [
   {
     title: "Junior ROS Developer",
@@ -35,7 +50,7 @@ const experiences = [
  */
 export function Experience() {
   return (
-    <section id="experience" className="py-24 border-t border-border" aria-labelledby="experience-heading">
+    <section id="experience" className="py-28 border-t border-border section-experience" role="region" aria-labelledby="experience-heading">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -48,14 +63,19 @@ export function Experience() {
             Work Experience
           </h2>
           
-          <div className="space-y-12">
+          <motion.div 
+            className="space-y-16"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                variants={staggerItem}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.4 }}
                 className="relative pl-8 border-l-2 border-border"
               >
                 <motion.div
@@ -96,7 +116,7 @@ export function Experience() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>

@@ -87,17 +87,19 @@ export function Contact() {
     const message = formData.get("message") as string;
 
     try {
-      // Import and use EmailJS when configured
-      // const { sendEmail } = await import('@/lib/emailjs');
-      // const result = await sendEmail({ name, email, message });
+      const { sendEmail } = await import('@/lib/emailjs');
+      const result = await sendEmail({ name, email, message });
       
-      // For now, use mailto fallback
-      const subject = encodeURIComponent(`Portfolio Contact: ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-      window.location.href = `mailto:sutharsanmail311@gmail.com?subject=${subject}&body=${body}`;
-      
-      setSubmitStatus({ type: 'success', message: 'Opening email client...' });
-      form.reset();
+      if (result.success) {
+        setSubmitStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' });
+        form.reset();
+      } else if (result.fallback) {
+        // Mailto fallback - show info message
+        setSubmitStatus({ type: 'success', message: 'Email client opened. Please send the email manually. I\'ll receive it once you send it.' });
+        form.reset();
+      } else {
+        setSubmitStatus({ type: 'error', message: result.error || 'Failed to send message. Please try again.' });
+      }
     } catch (error) {
       setSubmitStatus({ 
         type: 'error', 

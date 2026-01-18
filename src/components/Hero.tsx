@@ -129,6 +129,13 @@ export function Hero() {
                   >
                     Let's Connect
                   </GradientButton>
+                  <GradientButton 
+                    variant="resume" 
+                    onClick={downloadResume}
+                    aria-label="Download resume"
+                  >
+                    Download Resume
+                  </GradientButton>
                 </div>
               </motion.div>
             </div>

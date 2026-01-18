@@ -305,4 +305,34 @@
     --border-color-1: hsla(320, 75%, 90%, 0.2);
     --border-color-2: hsla(320, 50%, 90%, 0.75);
   }
+
+  .gradient-button-resume {
+    --color-1: #000a0f;
+    --color-2: #003d2e;
+    --color-3: #006b5c;
+    --color-4: #00d4aa;
+    --border-angle: 160deg;
+    --border-color-1: hsla(170, 100%, 60%, 0.6);
+    --border-color-2: hsla(170, 80%, 50%, 0.15);
+  }
+
+  .gradient-button-resume:hover {
+    --pos-x: 0%;
+    --pos-y: 92%;
+    --spread-x: 112%;
+    --spread-y: 108%;
+    --color-1: #001a15;
+    --color-2: #00d4aa;
+    --color-3: #006b5c;
+    --color-4: #003d2e;
+    --color-5: #000;
+    --stop-1: 0%;
+    --stop-2: 10%;
+    --stop-3: 28%;
+    --stop-4: 68%;
+    --stop-5: 86%;
+    --border-angle: 165deg;
+    --border-color-1: hsla(170, 100%, 70%, 0.2);
+    --border-color-2: hsla(170, 90%, 60%, 0.75);
+  }
 }

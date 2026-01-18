@@ -19,6 +19,8 @@ const projects = [
     ],
     stack: ["ROS", "Python", "OpenCV", "Embedded Systems"],
     outcome: "Finalist in E-Yantra Robotics Competition 2022-2023.",
+    imageUrl: "/system-focus/project-krishi-bot.jpg", // Add your project image to public folder
+    githubUrl: "https://github.com/sutharsan-311/krishi-bot", // Update with your actual GitHub repo
   },
   {
     title: "Medical Drone",
@@ -35,6 +37,8 @@ const projects = [
     ],
     stack: ["Python", "OpenCV", "Image Segmentation", "Drone Systems"],
     outcome: "Functional prototype demonstrating vision-guided emergency response capabilities.",
+    imageUrl: "/system-focus/project-medical-drone.jpg", // Add your project image to public folder
+    githubUrl: "https://github.com/sutharsan-311/medical-drone", // Update with your actual GitHub repo
   },
   {
     title: "Flipkart GRID 2.0 – Computer Vision Challenge",
@@ -51,6 +55,8 @@ const projects = [
     ],
     stack: ["Python", "OpenCV", "Image Segmentation", "Computer Vision"],
     outcome: "Short-listed for Level 2 in Flipkart GRID 2.0 competition.",
+    imageUrl: "/system-focus/project-flipkart-grid.jpg", // Add your project image to public folder
+    githubUrl: "https://github.com/sutharsan-311/flipkart-grid", // Update with your actual GitHub repo
   },
 ];
 

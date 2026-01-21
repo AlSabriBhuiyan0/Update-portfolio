@@ -13,7 +13,7 @@ export interface WebVitalsMetric {
 
 /**
  * Reports Web Vitals metrics to analytics service.
- * Currently logs to console, but can be extended to send to analytics.
+ * Automatically sends to Google Analytics if configured.
  */
 export const reportWebVitals = (metric: WebVitalsMetric) => {
   // Log to console in development
@@ -24,8 +24,7 @@ export const reportWebVitals = (metric: WebVitalsMetric) => {
     });
   }
 
-  // Send to analytics (uncomment when analytics is configured)
-  /*
+  // Send to Google Analytics if available
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', metric.name, {
       value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
@@ -34,7 +33,6 @@ export const reportWebVitals = (metric: WebVitalsMetric) => {
       non_interaction: true,
     });
   }
-  */
 };
 
 /**

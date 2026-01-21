@@ -6,6 +6,7 @@ import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { trackEvent } from "@/lib/analytics";
 
 const links = [
   {
@@ -92,13 +93,16 @@ export function Contact() {
       
       if (result.success) {
         setSubmitStatus({ type: 'success', message: 'Message sent successfully! I\'ll get back to you soon.' });
+        trackEvent('contact_form_submit', 'Contact', 'success');
         form.reset();
       } else if (result.fallback) {
         // Mailto fallback - show info message
         setSubmitStatus({ type: 'success', message: 'Email client opened. Please send the email manually. I\'ll receive it once you send it.' });
-      form.reset();
+        trackEvent('contact_form_submit', 'Contact', 'fallback_mailto');
+        form.reset();
       } else {
         setSubmitStatus({ type: 'error', message: result.error || 'Failed to send message. Please try again.' });
+        trackEvent('contact_form_submit', 'Contact', 'error');
       }
     } catch (error) {
       setSubmitStatus({ 

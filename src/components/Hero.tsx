@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SplineScene } from "@/components/ui/spline";
+import { trackEvent } from "@/lib/analytics";
 
 const capabilities = [
   "ROS/ROS2",
@@ -57,14 +58,17 @@ export function Hero() {
   };
 
   const scrollToProjects = () => {
+    trackEvent('click', 'Navigation', 'View Projects Button');
     scrollToSection("projects");
   };
 
   const scrollToContact = () => {
+    trackEvent('click', 'Navigation', 'Lets Connect Button');
     scrollToSection("contact");
   };
 
   const downloadResume = () => {
+    trackEvent('download', 'Resume', 'Download Resume Button');
     const link = document.createElement("a");
     link.href = "/resume.pdf";
     link.download = "Sutharsan_Resume.pdf";

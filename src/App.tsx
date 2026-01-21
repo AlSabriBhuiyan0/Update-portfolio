@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Skeleton } from "@/components/ui/skeleton";
 import { initWebVitals } from "@/lib/web-vitals";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
 import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -32,6 +33,11 @@ const PageLoader = () => (
 const AnimatedRoutes = () => {
   const location = useLocation();
   const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Track page views on route changes
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait">
@@ -72,6 +78,9 @@ const App = () => {
   useKeyboardShortcuts();
 
   useEffect(() => {
+    // Initialize analytics
+    initAnalytics();
+    
     // Initialize Web Vitals tracking for performance monitoring
     initWebVitals().catch(console.error);
   }, []);

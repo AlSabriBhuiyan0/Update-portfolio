@@ -58,6 +58,28 @@ const projects = [
     imageUrl: "/project-flipkart-grid.jpg", // Add your project image to public folder
     githubUrl: "https://github.com/sutharsan-311/flipkart-grid", // Update with your actual GitHub repo
   },
+  {
+    title: "LabConnect – Role-Based Collaboration Platform",
+    summary: "Full-stack web application for managing lab registrations, attendance, and collaboration within a Product Innovation Center, enabling structured interaction between students, faculty, industry experts, and administrators.",
+    details: [
+      "Contributed to UI/UX design and layout, focusing on usability and role clarity",
+      "Designed intuitive dashboards for Students, Faculty, Industry Experts, and Admins",
+      "Structured user flows for lab registration, request handling, and discussion forums",
+      "Collaborated with backend and API teams to align UI behavior with system logic",
+      "Implemented role-based access control for Admin, Faculty, Student, and Industry users",
+      "Developed lab creation, event management, and full CRUD operations (Admin)",
+      "Built attendance management and request approval workflows (Faculty)",
+      "Created discussion forum enabling cross-role collaboration using REST APIs",
+    ],
+    constraints: [
+      "Multi-role system requiring clear permission boundaries",
+      "Real-time interaction requirements for collaboration features",
+      "Complex user flows across different user types",
+    ],
+    stack: ["ReactJS", "Spring Boot", "MySQL", "Axios", "Ngrok", "CSS"],
+    outcome: "While my primary focus is robotics, this project reflects my ability to collaborate across software domains, design usable systems, and work in multi-disciplinary teams—skills that directly translate to complex robotics systems.",
+    githubUrl: "https://github.com/RAVIVARMA0707/Lab-Connect-Role-Based-Collaboration-Platform",
+  },
 ];
 
 /**
@@ -78,7 +100,7 @@ export function Projects() {
             Featured Work
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            A selection of robotics projects showcasing autonomous systems, perception, and intelligent solutions
+            A selection of robotics projects showcasing autonomous systems, perception, and intelligent solutions, along with additional software projects demonstrating cross-domain collaboration capabilities
           </p>
           
           <motion.div

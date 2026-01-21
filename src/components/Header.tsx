@@ -138,7 +138,7 @@ export function Header() {
                 />
               ))}
               <a
-                href="/system-focus/resume.pdf"
+                href="/resume.pdf"
                 download="Sutharsan_Resume.pdf"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-foreground hover:bg-white/10 mt-2"
@@ -197,7 +197,7 @@ export function Header() {
             );
           })}
           <a
-            href="/system-focus/resume.pdf"
+            href="/resume.pdf"
             download="Sutharsan_Resume.pdf"
             aria-label="Download resume"
             className={cn(

@@ -127,10 +127,11 @@ export function Hero() {
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-col md:flex-row gap-4 w-full">
                   <GradientButton 
                     onClick={scrollToProjects}
                     aria-label="Scroll to projects section"
+                    className="w-full md:w-auto"
                   >
                     View Projects
                   </GradientButton>
@@ -138,6 +139,7 @@ export function Hero() {
                     variant="variant" 
                     onClick={scrollToContact}
                     aria-label="Scroll to contact section"
+                    className="w-full md:w-auto"
                   >
                     Let's Connect
                   </GradientButton>
@@ -145,6 +147,7 @@ export function Hero() {
                     variant="resume" 
                     onClick={downloadResume}
                     aria-label="Download resume"
+                    className="w-full md:w-auto"
                   >
                     Download Resume
                   </GradientButton>

@@ -99,7 +99,7 @@ export function Contact() {
         // Mailto fallback - show info message
         setSubmitStatus({ type: 'success', message: 'Email client opened. Please send the email manually. I\'ll receive it once you send it.' });
         trackEvent('contact_form_submit', 'Contact', 'fallback_mailto');
-        form.reset();
+      form.reset();
       } else {
         setSubmitStatus({ type: 'error', message: result.error || 'Failed to send message. Please try again.' });
         trackEvent('contact_form_submit', 'Contact', 'error');

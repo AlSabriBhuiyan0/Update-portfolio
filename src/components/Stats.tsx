@@ -1,4 +1,4 @@
-import { motion, useInView, useMotionValue, useSpring, useMotionValueEvent } from "framer-motion";
+import { motion, useInView, useMotionValue, useSpring, useMotionValueEvent, useReducedMotion } from "framer-motion";
 import { Code, Briefcase, Award, Rocket } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -79,6 +79,8 @@ function Counter({ value, label }: { value: string; label: string }) {
  * Shows metrics like years of experience, projects completed, and achievements with animated icons.
  */
 export function Stats() {
+  const prefersReducedMotion = useReducedMotion();
+  
   return (
     <section className="py-12 border-t border-border bg-black" role="region" aria-label="Statistics and achievements">
       <div className="container">
@@ -93,6 +95,10 @@ export function Stats() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 className="text-center space-y-2"
+                whileHover={!prefersReducedMotion ? {
+                  y: -4,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                } : {}}
               >
                 <motion.div 
                   className="flex justify-center mb-3"
@@ -105,10 +111,21 @@ export function Stats() {
                     damping: 15,
                     delay: index * 0.1 + 0.2 
                   }}
+                  whileHover={!prefersReducedMotion ? {
+                    scale: 1.15,
+                    rotate: [0, -5, 5, -5, 0],
+                    transition: { duration: 0.5 }
+                  } : {}}
                 >
-                  <div className="p-3 rounded-lg bg-primary/10">
+                  <motion.div 
+                    className="p-3 rounded-lg bg-primary/10 transition-colors duration-200"
+                    whileHover={!prefersReducedMotion ? {
+                      backgroundColor: "rgba(var(--primary), 0.2)",
+                      transition: { duration: 0.2 }
+                    } : {}}
+                  >
                     <Icon className="w-6 h-6 text-primary" aria-hidden="true" />
-                  </div>
+                  </motion.div>
                 </motion.div>
                 <Counter value={stat.value} label={stat.label} />
                 <div className="text-sm font-semibold text-foreground">

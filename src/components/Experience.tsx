@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -49,6 +49,8 @@ const experiences = [
  * Features a vertical timeline with animated entries on scroll.
  */
 export function Experience() {
+  const prefersReducedMotion = useReducedMotion();
+  
   return (
     <section id="experience" className="py-28 border-t border-border section-experience" role="region" aria-labelledby="experience-heading">
       <div className="container">
@@ -75,17 +77,32 @@ export function Experience() {
                 key={index}
                 variants={staggerItem}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className="relative pl-8 border-l-2 border-border"
+                transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4 }}
+                className="relative pl-8 border-l-2 border-border rounded-lg p-4 -ml-4 hover:bg-primary/5 transition-colors duration-200"
+                whileHover={!prefersReducedMotion ? {
+                  x: 4,
+                  transition: { duration: 0.3, ease: "easeOut" }
+                } : {}}
               >
                 <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
+                  initial={prefersReducedMotion ? {} : { scale: 0 }}
+                  whileInView={prefersReducedMotion ? {} : { scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: index * 0.1 + 0.1 }}
-                  className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-primary border-2 border-background"
+                  transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3, delay: index * 0.1 + 0.1 }}
+                  className="absolute -left-[9px] top-4 w-4 h-4 rounded-full bg-primary border-2 border-background z-10 shadow-lg shadow-primary/20"
+                  whileHover={!prefersReducedMotion ? {
+                    scale: 1.4,
+                    boxShadow: "0 0 20px rgba(var(--primary), 0.4)",
+                    transition: { type: "spring", stiffness: 400, damping: 10 }
+                  } : {}}
                 />
-                <div className="space-y-3">
+                <motion.div 
+                  className="space-y-3"
+                  initial={prefersReducedMotion ? {} : { opacity: 0 }}
+                  whileInView={prefersReducedMotion ? {} : { opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3, delay: index * 0.1 }}
+                >
                   <div>
                     <h3 className="text-xl font-semibold text-foreground">
                       {exp.title}
@@ -102,18 +119,22 @@ export function Experience() {
                     {exp.bullets.map((bullet, bulletIndex) => (
                       <motion.li
                         key={bulletIndex}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={prefersReducedMotion ? {} : { opacity: 0, x: -10 }}
+                        whileInView={prefersReducedMotion ? {} : { opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.2, delay: index * 0.1 + bulletIndex * 0.05 }}
+                        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.2, delay: index * 0.1 + bulletIndex * 0.05 }}
                         className="text-foreground leading-relaxed text-sm"
+                        whileHover={!prefersReducedMotion ? {
+                          x: 4,
+                          transition: { duration: 0.2 }
+                        } : {}}
                       >
                         <span className="text-muted-foreground">• </span>
                         <span dangerouslySetInnerHTML={{ __html: bullet.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
                       </motion.li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </motion.div>

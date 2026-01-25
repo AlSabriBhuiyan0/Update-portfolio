@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const skillCategories = [
   {
@@ -71,6 +71,8 @@ const skillCategories = [
  * Shows skills in a grid layout with hover effects and organized by domain (Robotics, Perception, Navigation, etc.).
  */
 export function Skills() {
+  const prefersReducedMotion = useReducedMotion();
+  
   return (
     <section id="skills" className="py-28 border-t border-border section-skills" role="region" aria-labelledby="skills-heading">
       <div className="container">
@@ -110,22 +112,50 @@ export function Skills() {
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 },
                 }}
-                transition={{ duration: 0.4 }}
+                transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4 }}
               >
-                <h3 className="text-base font-semibold text-foreground">
+                <motion.h3 
+                  className="text-base font-semibold text-foreground"
+                  initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.9 }}
+                  whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3, delay: index * 0.1 }}
+                  whileHover={!prefersReducedMotion ? {
+                    scale: 1.05,
+                    x: 2,
+                    transition: { duration: 0.2, ease: "easeOut" }
+                  } : {}}
+                >
                   {category.title}
-                </h3>
+                </motion.h3>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
-                    <span
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.span
                       key={skill}
-                      className="group text-xs text-muted-foreground font-mono px-2.5 py-1 bg-secondary rounded border border-border hover:border-primary/50 hover:bg-primary/5 hover:scale-105 hover:text-foreground transition-all duration-200 cursor-default"
+                      className="text-xs text-muted-foreground font-mono px-2.5 py-1 bg-secondary rounded border border-border hover:border-primary/50 hover:bg-primary/5 hover:text-foreground cursor-default focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors duration-200"
                       tabIndex={0}
                       role="text"
                       aria-label={`Skill: ${skill}`}
+                      initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.9 }}
+                      whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={prefersReducedMotion ? { duration: 0 } : {
+                        duration: 0.2,
+                        delay: index * 0.1 + skillIndex * 0.03
+                      }}
+                      whileHover={!prefersReducedMotion ? {
+                        scale: 1.1,
+                        y: -2,
+                        transition: { duration: 0.2, ease: "easeOut" }
+                      } : {}}
+                      whileFocus={!prefersReducedMotion ? {
+                        scale: 1.1,
+                        y: -2,
+                        transition: { duration: 0.2, ease: "easeOut" }
+                      } : {}}
                     >
                       {skill}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </motion.div>

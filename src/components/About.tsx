@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { Map, Scan, Settings, Wrench, Target, BookOpen, Heart, Code2 } from "lucide-react";
@@ -28,8 +28,9 @@ const features = [
 ];
 
 // Glowing Card Wrapper Component
-function GlowingCard({ children }: { children: React.ReactNode }) {
+function GlowingCard({ children, enable3D = false }: { children: React.ReactNode; enable3D?: boolean }) {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     setIsTouchDevice(
@@ -38,8 +39,21 @@ function GlowingCard({ children }: { children: React.ReactNode }) {
     );
   }, []);
 
+  const animationConfig = prefersReducedMotion 
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 300, damping: 20 };
+
   return (
-    <div className="relative rounded-[1.25rem] md:rounded-[1.5rem] border-[0.75px] border-border p-2 md:p-3">
+    <motion.div 
+      className="relative rounded-[1.25rem] md:rounded-[1.5rem] border-[0.75px] border-border p-2 md:p-3"
+      whileHover={enable3D && !isTouchDevice && !prefersReducedMotion ? {
+        rotateY: 2,
+        rotateX: -2,
+        scale: 1.02,
+        transition: animationConfig
+      } : {}}
+      style={{ perspective: enable3D ? 1000 : undefined }}
+    >
       <GlowingEffect
         spread={40}
         glow={true}
@@ -48,10 +62,16 @@ function GlowingCard({ children }: { children: React.ReactNode }) {
         inactiveZone={0.01}
         borderWidth={3}
       />
-      <div className="relative rounded-xl border-[0.75px] border-border/50">
+      <motion.div 
+        className="relative rounded-xl border-[0.75px] border-border/50"
+        whileHover={enable3D && !isTouchDevice && !prefersReducedMotion ? {
+          boxShadow: "0px_0px_40px_0px_rgba(45,45,45,0.4)",
+          transition: animationConfig
+        } : {}}
+      >
         {children}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -61,11 +81,16 @@ function GlowingCard({ children }: { children: React.ReactNode }) {
  */
 export function About() {
   const aboutRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: aboutRef,
     offset: ["start end", "end start"]
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  
+  const animationConfig = prefersReducedMotion 
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 300, damping: 20 };
 
   return (
     <section ref={aboutRef} id="about" className="py-28 border-t border-border section-about relative overflow-hidden" role="region" aria-labelledby="about-heading">
@@ -166,12 +191,19 @@ export function About() {
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <GlowingCard key={index}>
+                <GlowingCard key={index} enable3D={true}>
                   <Card className="h-full border-0 bg-background shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] flex flex-col">
                     <CardHeader className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                      <motion.div 
+                        className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4"
+                        whileHover={!prefersReducedMotion ? {
+                          scale: 1.1,
+                          rotate: 5,
+                          transition: animationConfig
+                        } : {}}
+                      >
                         <Icon className="w-6 h-6 text-primary" />
-                      </div>
+                      </motion.div>
                       <CardTitle className={`${feature.title.length > 10 ? 'text-base' : 'text-lg'} leading-tight min-h-[2.5rem]`}>{feature.title}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex-grow">

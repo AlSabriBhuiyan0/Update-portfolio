@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   AccordionContent,
   AccordionItem,
@@ -38,6 +39,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, value, featured = false }: ProjectCardProps) {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     // Detect touch device - disable glow on mobile/touch for performance
@@ -48,7 +50,17 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
   }, []);
 
   return (
-    <div className="relative rounded-[1.25rem] md:rounded-[1.5rem] border-[0.75px] border-border p-2 md:p-3">
+    <motion.div 
+      className="relative rounded-[1.25rem] md:rounded-[1.5rem] border-[0.75px] border-border p-2 md:p-3"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4, ease: "easeOut" }}
+      whileHover={!prefersReducedMotion && !isTouchDevice ? {
+        y: -4,
+        transition: { duration: 0.3, ease: "easeOut" }
+      } : {}}
+    >
       {/* Glowing Effect - Outer Boundary */}
       <GlowingEffect
         spread={40}
@@ -60,22 +72,34 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
       />
 
       {/* Inner Content Card - Double Boundary */}
-      <div className="relative flex h-full flex-col overflow-hidden rounded-xl border-[0.75px] bg-background shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]">
+      <motion.div 
+        className="relative flex h-full flex-col overflow-hidden rounded-xl border-[0.75px] bg-background shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)]"
+        whileHover={!prefersReducedMotion && !isTouchDevice ? {
+          boxShadow: "0px_0px_40px_0px_rgba(45,45,45,0.4)",
+          transition: { duration: 0.3 }
+        } : {}}
+      >
         <AccordionItem
           value={value}
           className="border-0 bg-transparent data-[state=open]:bg-transparent"
         >
           <AccordionTrigger 
             id={`${value}-trigger`}
-            className="w-full px-6 py-6 text-left hover:bg-secondary/30 transition-colors duration-150 hover:no-underline"
+            className="w-full px-6 py-6 text-left hover:bg-secondary/30 transition-colors duration-150 hover:no-underline group"
             aria-expanded={value === "project-0" || value === "project-1" || value === "project-2" ? undefined : false}
             aria-controls={`${value}-content`}
           >
             <div className="flex-1 min-w-0 text-left">
-              <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2 leading-tight">
+              <motion.h3 
+                className="text-lg md:text-xl font-semibold text-foreground mb-2 leading-tight"
+                whileHover={!prefersReducedMotion ? {
+                  x: 2,
+                  transition: { duration: 0.2 }
+                } : {}}
+              >
                 {project.title}
-              </h3>
-              <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+              </motion.h3>
+              <p className="text-muted-foreground text-sm md:text-base leading-relaxed group-hover:text-foreground/80 transition-colors duration-200">
                 {project.summary}
               </p>
             </div>
@@ -121,14 +145,29 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
                   Stack
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {project.stack.map((tech) => (
-                    <Badge
+                  {project.stack.map((tech, techIndex) => (
+                    <motion.div
                       key={tech}
-                      variant="outline"
-                      className="font-mono text-xs text-muted-foreground bg-secondary border-border"
+                      initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.8 }}
+                      whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={prefersReducedMotion ? { duration: 0 } : {
+                        duration: 0.2,
+                        delay: techIndex * 0.05
+                      }}
+                      whileHover={!prefersReducedMotion ? {
+                        scale: 1.1,
+                        y: -2,
+                        transition: { duration: 0.2 }
+                      } : {}}
                     >
-                      {tech}
-                    </Badge>
+                      <Badge
+                        variant="outline"
+                        className="font-mono text-xs text-muted-foreground bg-secondary border-border hover:border-primary/50 hover:bg-primary/5 hover:text-foreground transition-all duration-200 cursor-default"
+                      >
+                        {tech}
+                      </Badge>
+                    </motion.div>
                   ))}
                 </div>
               </div>
@@ -149,38 +188,88 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.imageUrl && (
-                      <button
+                      <motion.button
                         onClick={() => setIsImageModalOpen(true)}
                         className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-foreground bg-secondary border border-border rounded hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                         aria-label={`View image for ${project.title}`}
+                        whileHover={!prefersReducedMotion ? {
+                          scale: 1.05,
+                          y: -1,
+                          transition: { duration: 0.2 }
+                        } : {}}
+                        whileTap={!prefersReducedMotion ? {
+                          scale: 0.95,
+                          transition: { duration: 0.1 }
+                        } : {}}
                       >
-                        <ImageIcon className="h-3 w-3" />
+                        <motion.div
+                          whileHover={!prefersReducedMotion ? {
+                            rotate: [0, -10, 10, -10, 0],
+                            transition: { duration: 0.5 }
+                          } : {}}
+                        >
+                          <ImageIcon className="h-3 w-3" />
+                        </motion.div>
                         View Image
-                      </button>
+                      </motion.button>
                     )}
                     {project.demoUrl && (
-                      <a
+                      <motion.a
                         href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-foreground bg-secondary border border-border rounded hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                         aria-label={`View live demo of ${project.title}`}
+                        whileHover={!prefersReducedMotion ? {
+                          scale: 1.05,
+                          y: -1,
+                          transition: { duration: 0.2 }
+                        } : {}}
+                        whileTap={!prefersReducedMotion ? {
+                          scale: 0.95,
+                          transition: { duration: 0.1 }
+                        } : {}}
                       >
-                        <ExternalLink className="h-3 w-3" />
+                        <motion.div
+                          whileHover={!prefersReducedMotion ? {
+                            x: 2,
+                            y: -2,
+                            transition: { duration: 0.2 }
+                          } : {}}
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                        </motion.div>
                         Live Demo
-                      </a>
+                      </motion.a>
                     )}
                     {project.githubUrl && (
-                      <a
+                      <motion.a
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-foreground bg-secondary border border-border rounded hover:border-primary/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                         aria-label={`View GitHub repository for ${project.title}`}
+                        whileHover={!prefersReducedMotion ? {
+                          scale: 1.05,
+                          y: -1,
+                          transition: { duration: 0.2 }
+                        } : {}}
+                        whileTap={!prefersReducedMotion ? {
+                          scale: 0.95,
+                          transition: { duration: 0.1 }
+                        } : {}}
                       >
-                        <ExternalLink className="h-3 w-3" />
+                        <motion.div
+                          whileHover={!prefersReducedMotion ? {
+                            x: 2,
+                            y: -2,
+                            transition: { duration: 0.2 }
+                          } : {}}
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                        </motion.div>
                         GitHub
-                      </a>
+                      </motion.a>
                     )}
                   </div>
                 </div>
@@ -188,7 +277,7 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
             </div>
           </AccordionContent>
         </AccordionItem>
-      </div>
+      </motion.div>
       
       {project.imageUrl && (
         <ImageModal
@@ -199,6 +288,6 @@ export function ProjectCard({ project, value, featured = false }: ProjectCardPro
           title={project.title}
         />
       )}
-    </div>
+    </motion.div>
   );
 }

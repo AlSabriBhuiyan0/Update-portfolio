@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SplineScene } from "@/components/ui/spline";
@@ -27,6 +27,7 @@ const rotatingTitles = [
  */
 export function Hero() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const prefersReducedMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -34,6 +35,10 @@ export function Hero() {
   });
   const y = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  
+  const animationConfig = prefersReducedMotion 
+    ? { duration: 0 }
+    : { type: "spring" as const, stiffness: 300, damping: 20 };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -101,10 +106,10 @@ export function Hero() {
                   <AnimatePresence mode="wait">
                     <motion.h2
                       key={currentTitleIndex}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.5 }}
+                      initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+                      animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                      exit={prefersReducedMotion ? {} : { opacity: 0, y: -20 }}
+                      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.3, ease: "easeInOut" }}
                       className="text-2xl md:text-3xl lg:text-4xl font-medium text-neutral-300"
                     >
                       {rotatingTitles[currentTitleIndex]}
@@ -117,13 +122,27 @@ export function Hero() {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-12">
-                  {capabilities.map((cap) => (
-                    <span
+                  {capabilities.map((cap, index) => (
+                    <motion.span
                       key={cap}
-                      className="font-mono text-sm text-neutral-400 px-3 py-1.5 bg-neutral-900/50 rounded border border-neutral-800"
+                      className="font-mono text-sm text-neutral-400 px-3 py-1.5 bg-neutral-900/50 rounded border border-neutral-800 cursor-default transition-colors duration-200"
+                      initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
+                      animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+                      transition={prefersReducedMotion ? { duration: 0 } : {
+                        duration: 0.3,
+                        delay: index * 0.1
+                      }}
+                      whileHover={!prefersReducedMotion ? {
+                        scale: 1.08,
+                        y: -2,
+                        borderColor: "rgba(255, 255, 255, 0.3)",
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                        color: "rgba(255, 255, 255, 0.9)",
+                        transition: { duration: 0.2, ease: "easeOut" }
+                      } : {}}
                     >
                       {cap}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
 

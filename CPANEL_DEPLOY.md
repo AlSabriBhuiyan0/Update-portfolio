@@ -60,12 +60,48 @@ If the page is still blank:
    - **CORS / MIME type errors** → The `.htaccess` in this project sets correct MIME for `.js`; ensure `.htaccess` is uploaded and that your host allows `.htaccess`.
    - **Other JavaScript errors** → Share the exact message for further debugging.
 
-## 4. Summary checklist
+## 4. React error: `__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED`
 
-- [ ] Ran `npm run build`
+If you see:
+
+```text
+Uncaught TypeError: Cannot read properties of undefined (reading '__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED')
+```
+
+**Fix:** Rebuild and re-upload. The build is now configured so **React** and **ReactDOM** stay in the same chunk (a single React instance). Run `npm run build` and upload the new contents of `dist` again.
+
+## 5. Lockdown / SES and Content Security Policy (CSP)
+
+**“lockdown-install.js / SES Removing unpermitted intrinsics”**  
+This usually comes from a **browser extension** (e.g. Lockdown, privacy/security tools). Those can break React.
+
+- Try opening the site in **Incognito/Private** (extensions often disabled there) or another browser.
+- If it works there, disable that extension on the site or in normal browsing.
+
+**“Content Security Policy (CSP) prevents the evaluation of arbitrary strings” / script-src blocked**  
+If your **host** (cPanel) adds a strict CSP that blocks `eval` or inline scripts:
+
+1. In cPanel, check **Security** → **ModSecurity** or similar and see if you can relax or disable CSP for your domain.
+2. If your host allows overriding headers, you can add this to your **`.htaccess`** (only if the host doesn’t set CSP itself):
+
+   ```apache
+   # Only if your host does NOT already set a strict CSP
+   <IfModule mod_headers.c>
+     Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self';"
+   </IfModule>
+   ```
+
+   Adding `'unsafe-eval'` weakens security slightly; use only if the site fails without it and you can’t change the host’s CSP.
+
+3. If you can’t change CSP, ask your host to allow `'unsafe-eval'` in `script-src` for your domain, or consider hosting on a platform that doesn’t inject a strict CSP (e.g. Vercel, Netlify, GitHub Pages).
+
+## 6. Summary checklist
+
+- [ ] Ran `npm run build` (use latest build so React + ReactDOM are in one chunk)
 - [ ] Uploaded **only** the contents of `dist` (including `index.html`, `assets/`, `.htaccess`)
 - [ ] Upload target is the **document root** (e.g. public_html) or the correct subdirectory
 - [ ] If using a subdirectory, set `base` in `vite.config.ts` and rebuilt
 - [ ] Checked browser console (F12) for errors
+- [ ] If you see lockdown/SES or CSP errors, try Incognito or relax CSP (see section 5)
 
 After a correct upload, the first request loads `index.html`, then the browser loads `/assets/*.js` and `/assets/*.css`. If those paths are wrong (wrong base or wrong folder), scripts don’t run and you get a blank (black) page.

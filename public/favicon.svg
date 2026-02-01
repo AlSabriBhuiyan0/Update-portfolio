@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- briefcase body -->
+  <path d="M4 12h24v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V12z" fill="#0f172a"/>
+  <!-- handle -->
+  <path d="M12 12V9a4 4 0 1 1 8 0v3" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- top edge -->
+  <path d="M4 14h24" stroke="#0f172a" stroke-width="1.5" fill="none"/>
+</svg>

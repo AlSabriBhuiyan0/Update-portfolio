@@ -18,7 +18,7 @@ const getResponse = (question: string): string => {
   const q = question.toLowerCase();
   
   if (q.includes("experience") || q.includes("work")) {
-    return "I'm a Data Scientist and Full-stack Developer with 3+ years of experience. I turn complex data into actionable insights and build user-friendly web apps with React, Next.js, Node.js, Python, TensorFlow, PyTorch, and tools like Power BI and Tableau.";
+    return "I'm a Data Scientist and Full-stack Developer with 4+ years of experience. I turn complex data into actionable insights and build user-friendly web apps with React, Next.js, Node.js, Python, TensorFlow, PyTorch, and tools like Power BI and Tableau.";
   }
   if (q.includes("data science") || q.includes("machine learning") || q.includes("ml")) {
     return "I work with TensorFlow, PyTorch, scikit-learn, Keras, and Deep Learning for data analysis and ML models. I also use Power BI, Tableau, Excel, and Deepnote for visualization and reporting.";

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   {
     icon: Briefcase,
-    value: "3+",
+    value: "4+",
     label: "Years Experience",
     description: "Data Science & Web Development",
   },

@@ -1,62 +1,78 @@
 import { motion, useReducedMotion } from "framer-motion";
 
+// Skills from LinkedIn profile: linkedin.com/in/alsabribhuiyan
+// Plus technical stack from experience (Python, React, etc.)
 const skillCategories = [
   {
-    title: "Programming",
+    title: "Engineering & Tech",
     skills: [
-      "Java",
+      "Engineering",
+      "Software",
+      "IoT",
+      "Automation",
+      "Blockchain",
+      "Computer Science",
+    ],
+  },
+  {
+    title: "Analytics & Data",
+    skills: [
+      "Analytics",
+      "Data Collection",
+      "Calculations",
       "Python",
-      "C",
-      "JavaScript",
+      "SQL",
+      "Excel",
     ],
   },
   {
-    title: "Data & ML",
+    title: "Collaboration & Research",
     skills: [
-      "TensorFlow",
-      "scikit-learn",
-      "Keras",
-      "PyTorch",
-      "Deep Learning",
-      "Machine Learning",
+      "Collaboration",
+      "Research",
+      "Science",
+      "Healthcare",
     ],
   },
   {
-    title: "Web & Front-end",
+    title: "Sales & Marketing",
     skills: [
-      "HTML",
-      "CSS",
+      "Sales",
+      "Selling",
+      "Digital Marketing",
+      "Marketing",
+      "Campaigns",
+    ],
+  },
+  {
+    title: "Web & Development",
+    skills: [
       "React",
       "Next.js",
+      "Node.js",
+      "JavaScript",
+      "HTML",
+      "CSS",
     ],
   },
   {
-    title: "Databases & Tools",
+    title: "Operations & Tools",
     skills: [
-      "MongoDB",
-      "MariaDB",
-      "PowerBI",
-      "Tableau",
-      "Excel",
-      "Deepnote",
-    ],
-  },
-  {
-    title: "Automation & Other",
-    skills: [
-      "Selenium",
+      "Operations",
+      "Benefits",
+      "Digital",
+      "Pressure",
       "GitHub",
     ],
   },
 ];
 
 /**
- * Skills component - Displays technical stack organized by categories.
- * Shows skills in a grid layout with hover effects and organized by domain.
+ * Skills component - Displays technical and professional skills from LinkedIn profile.
  */
 export function Skills() {
   const prefersReducedMotion = useReducedMotion();
-  
+
   return (
     <section id="skills" className="py-28 border-t border-border section-skills" role="region" aria-labelledby="skills-heading">
       <div className="container">
@@ -70,10 +86,10 @@ export function Skills() {
             Skills
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            A comprehensive toolkit for data science, machine learning, and web development
+            A comprehensive toolkit from my <a href="https://www.linkedin.com/in/alsabribhuiyan/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">LinkedIn profile</a> — engineering, analytics, research, sales, and web development.
           </p>
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
             initial="hidden"
             whileInView="visible"
@@ -89,8 +105,8 @@ export function Skills() {
             }}
           >
             {skillCategories.map((category, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="space-y-3"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
@@ -98,7 +114,7 @@ export function Skills() {
                 }}
                 transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4 }}
               >
-                <motion.h3 
+                <motion.h3
                   className="text-base font-semibold text-foreground"
                   initial={prefersReducedMotion ? {} : { opacity: 0, scale: 0.9 }}
                   whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}

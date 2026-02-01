@@ -7,23 +7,23 @@ import { Map, Scan, Settings, Wrench, Target, BookOpen, Heart, Code2 } from "luc
 const features = [
   {
     icon: Map,
-    title: "Data Science & ML",
-    description: "Turning complex data into actionable insights with TensorFlow, PyTorch, scikit-learn, and Keras for machine learning and deep learning.",
+    title: "Data Engineering & Analytics",
+    description: "Leveraging data engineering and analytics to create web solutions that resonate with client goals and values.",
   },
   {
     icon: Scan,
-    title: "Full-stack Development",
+    title: "Web Development",
     description: "Building user-friendly web applications with React, Next.js, Node.js, and modern front-end and back-end technologies.",
   },
   {
     icon: Settings,
-    title: "Analytics & Visualization",
-    description: "Power BI, Tableau, Excel, and Deepnote for data analysis, dashboards, and reporting.",
+    title: "Data Collection & Preprocessing",
+    description: "Honing competencies in data collection and preprocessing for accurate, valuable contributions to healthcare and research studies.",
   },
   {
     icon: Wrench,
-    title: "End-to-end Projects",
-    description: "From real-time collaborative tools to resume builders — delivering complete, production-ready solutions.",
+    title: "Scientific & Research Collaboration",
+    description: "Collaborating with institutions like BSMMU and Incepta on diabetes research; commitment to meaningful scientific inquiry.",
   },
 ];
 
@@ -109,7 +109,7 @@ export function About() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             <div className="lg:col-span-2 space-y-6">
               <p className="text-lg text-foreground leading-relaxed">
-                Hello, I'm <strong>Al Sabri Bhuiyan (Sunny)</strong>. I'm a <strong>Data Scientist</strong> with a passion for turning complex data into actionable insights and building user-friendly applications. With <strong>3 years of experience</strong>, I bring a combination of analytical thinking and technical expertise. My goal is to create value by leveraging data and technology to solve real-world problems.
+                Hello, I'm <strong>Al Sabri Bhuiyan (Sunny)</strong>. At <strong>Enact Business Solutions</strong>, our team leverages <strong>data engineering and analytics</strong> to create web solutions that resonate with our client's goals and values. My educational journey at <strong>North South University</strong>, focusing on <strong>Computer Science</strong>, has been instrumental in developing my technical acumen, particularly in data-driven environments.
               </p>
               
               <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
@@ -119,7 +119,7 @@ export function About() {
               </div>
               
               <p className="text-foreground leading-relaxed">
-                I'm also a <strong>Web Developer</strong> with experience in front-end and back-end technologies. I've worked with <strong>React, Next.js, Node.js</strong>, and I enjoy solving complex challenges to build dynamic, user-friendly web applications. I'm constantly exploring new tech and staying up-to-date with the latest trends in the field.
+                My recent collaboration with <strong>Incepta Company Ltd.</strong> and <strong>Bangabandhu Sheikh Mujib Medical University</strong> in facilitating diabetes research underlines my commitment to meaningful scientific inquiry. It's here that I've honed my competencies in <strong>data collection and preprocessing</strong>, ensuring accurate and valuable contributions to healthcare studies. <strong>Total experience: 4 years and 11 months.</strong>
               </p>
               
               <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
@@ -130,7 +130,7 @@ export function About() {
               
               <div className="bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
                 <p className="text-foreground leading-relaxed italic">
-                My portfolio includes projects like real-time collaborative tools and resume builders. I'm always looking for new opportunities to grow and collaborate with others in the tech space. Feel free to reach out!
+                I'm always looking for new opportunities to grow and collaborate with others in the tech space. Feel free to reach out!
               </p>
               </div>
               
@@ -147,7 +147,7 @@ export function About() {
                     What I Do
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    I combine data science with full-stack development to deliver end-to-end solutions — from data pipelines and ML models to responsive web apps. I care about clean code, clear communication, and products that users actually enjoy using.
+                    I combine data engineering, analytics, and full-stack development to deliver end-to-end solutions — from data pipelines and ML models to responsive web apps. I care about clean code, clear communication, and products that users actually enjoy using.
                   </p>
                 </div>
                 
@@ -157,29 +157,44 @@ export function About() {
                     My Approach
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    I believe in iterative development, data-driven decisions, and continuous learning. I document my work, share knowledge, and stay curious about new tools and methods in data science and web development.
+                    I believe in iterative development, data-driven decisions, and continuous learning. I document my work, share knowledge, and stay curious about new tools and methods in data science and web development. I'm certified in Data Literacy, AI Fundamentals, Data Analyst, Data Scientist, Python, SQL, and more (DataCamp, AWS, Microsoft).
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Education Card */}
+            {/* Education Card - from LinkedIn */}
             <div>
               <GlowingCard>
                 <Card className="h-full border-0 bg-background shadow-sm dark:shadow-[0px_0px_27px_0px_rgba(45,45,45,0.3)] flex flex-col">
                   <CardHeader className="flex-shrink-0">
                     <CardTitle className="text-lg leading-tight min-h-[2.5rem]">Education</CardTitle>
                   </CardHeader>
-                  <CardContent className="flex-grow space-y-2">
-                    <h3 className="font-medium text-foreground">
-                      Education
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Data Science & Web Development
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      Self-taught & continuous learning
-                    </p>
+                  <CardContent className="flex-grow space-y-3">
+                    <div>
+                      <h3 className="font-medium text-foreground">
+                        B.Sc. Computer Science
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        North South University, Dhaka
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        2018 – 2024
+                      </p>
+                    </div>
+                    <div className="pt-2 border-t border-border">
+                      <h3 className="font-medium text-foreground text-sm">
+                        High School Diploma, Science · GPA 4.83
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        Dhaka Imperial College · 2014 – 2016
+                      </p>
+                    </div>
+                    <div className="pt-1">
+                      <p className="text-xs text-muted-foreground">
+                        Middle School, Science · GPA 5 · Motijheel Government Boys' High School · 2003 – 2014
+                      </p>
+                    </div>
                   </CardContent>
                 </Card>
               </GlowingCard>

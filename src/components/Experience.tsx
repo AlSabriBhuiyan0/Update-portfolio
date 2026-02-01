@@ -15,28 +15,102 @@ const staggerItem = {
   show: { opacity: 1, x: 0 },
 };
 
+// Work experience from LinkedIn: https://www.linkedin.com/in/alsabribhuiyan/
 const experiences = [
   {
-    title: "Data Scientist & Full-stack Developer",
-    company: "Freelance / Projects",
-    period: "3+ years of experience",
+    title: "Sales Associate",
+    company: "Ryo Gas",
+    period: "Dec 2025 – Present · Dhaka, Bangladesh",
     bullets: [
-      "Turning complex data into actionable insights using **Python, TensorFlow, PyTorch, scikit-learn, and Keras**",
-      "Building user-friendly web applications with **React, Next.js, Node.js** and modern front-end technologies",
-      "Developing **real-time collaborative tools** and **resume builders** with live preview and PDF generation",
-      "Data analysis and visualization with **Power BI, Tableau, Excel, and Deepnote**",
-      "Working with **MongoDB, MariaDB** and REST APIs for full-stack projects",
-      "Automation and testing with **Selenium** and continuous learning in **Machine Learning** and **Deep Learning**",
+      "Engaged in selling **IoT and software solutions** for managing gas stations, focusing on LPG, gas, and oil calculations.",
+      "Conducted **digital marketing campaigns** to generate leads and promote Ryo Gas's innovative software.",
+      "Collaborated with potential customers to understand their needs and demonstrate the benefits of **automation for gas pump operations**.",
+    ],
+  },
+  {
+    title: "AI Software Developer",
+    company: "Remote Work & Working at Home Jobs",
+    period: "Jun 2025 – Present · 5 months",
+    bullets: [
+      "Developing AI and software solutions in a remote, technology-focused environment.",
+    ],
+  },
+  {
+    title: "Blockchain Developer",
+    company: "Bricktoken",
+    period: "Jun 2025 – Dec 2025 · 6 months",
+    bullets: [
+      "Contributed to blockchain and technical development at Bricktoken.",
+    ],
+  },
+  {
+    title: "Contract Web Developer",
+    company: "Enact Business Solutions",
+    period: "Nov 2024 – Dec 2025 · 1 year 1 month · Dhaka, Bangladesh",
+    bullets: [
+      "Delivered web solutions aligned with client goals; contributed to data engineering and analytics for business consulting.",
+    ],
+  },
+  {
+    title: "Data Collection and Preprocessing",
+    company: "Bangabandhu Sheikh Mujib Medical University (BSMMU)",
+    period: "Oct 2024 – Nov 2024 · 1 month · Dhaka, Bangladesh",
+    bullets: [
+      "Collected and preprocessed data for **diabetes research** (Dr. Shahjada Selim), as vendor for Incepta Company Ltd.",
+      "Collected visitor data: name, age, phone, gender, height, weight, BMI, waist, hip, pressure, and blood samples.",
+      "Preprocessed data in **Excel** with blood sample results and formatted into three groups: Non-obese, Non-Diabetes, Diabetes.",
+      "Contributed to published research: <a href=\"https://www.nature.com/articles/s41598-024-67036-3\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-primary hover:underline\">Nature Scientific Reports – diabetes study</a>.",
+    ],
+  },
+  {
+    title: "Data Analyst",
+    company: "Parlance Consulting Services Ltd.",
+    period: "Sep 2024 – Nov 2024 · 2 months · Dhaka, Bangladesh",
+    bullets: [
+      "Worked on a freelance project for **human sentiment analysis**; delivered completed project.",
+    ],
+  },
+  {
+    title: "IT Helper",
+    company: "Ranamotors",
+    period: "Feb 2023 – Jul 2024 · 1 year 5 months",
+    bullets: [
+      "Provided IT support and technical assistance in an engineering environment.",
+    ],
+  },
+  {
+    title: "IT Helper",
+    company: "North South University",
+    period: "Feb 2023 – Jul 2024 · 1 year 5 months · Dhaka, Bangladesh",
+    bullets: [
+      "Supported IT and technical operations in a higher education setting.",
+    ],
+  },
+  {
+    title: "Officer (Supporting) of Remittance",
+    company: "Thai Airways International",
+    period: "Dec 2018 – Dec 2020 · 2 years · Dhaka, Bangladesh",
+    bullets: [
+      "Worked as **data entry clerk** for yearly expenses and remittance-related tasks.",
+    ],
+  },
+  {
+    title: "Data Scraper",
+    company: "Fiverr",
+    period: "Oct 2018 – Mar 2020 · 1 year 5 months · Bangladesh",
+    bullets: [
+      "Delivered **web scraping** solutions using **Python**, **Beautiful Soup**, and scripts for various client projects.",
     ],
   },
 ];
 
 /**
  * Experience component displays work experience in an animated timeline format.
+ * Data sourced from LinkedIn profile: linkedin.com/in/alsabribhuiyan
  */
 export function Experience() {
   const prefersReducedMotion = useReducedMotion();
-  
+
   return (
     <section id="experience" className="py-28 border-t border-border section-experience" role="region" aria-labelledby="experience-heading">
       <div className="container">
@@ -50,8 +124,8 @@ export function Experience() {
           <h2 id="experience-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-12">
             Work Experience
           </h2>
-          
-          <motion.div 
+
+          <motion.div
             className="space-y-16"
             variants={staggerContainer}
             initial="hidden"
@@ -60,7 +134,7 @@ export function Experience() {
           >
             {experiences.map((exp, index) => (
               <motion.div
-                key={index}
+                key={`${exp.company}-${exp.period}-${index}`}
                 variants={staggerItem}
                 viewport={{ once: true }}
                 transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.4 }}
@@ -82,7 +156,7 @@ export function Experience() {
                     transition: { type: "spring", stiffness: 400, damping: 10 }
                   } : {}}
                 />
-                <motion.div 
+                <motion.div
                   className="space-y-3"
                   initial={prefersReducedMotion ? {} : { opacity: 0 }}
                   whileInView={prefersReducedMotion ? {} : { opacity: 1 }}
@@ -100,7 +174,7 @@ export function Experience() {
                       {exp.period}
                     </p>
                   </div>
-                  
+
                   <ul className="space-y-2">
                     {exp.bullets.map((bullet, bulletIndex) => (
                       <motion.li

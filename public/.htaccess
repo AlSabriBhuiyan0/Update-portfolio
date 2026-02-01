@@ -1,0 +1,19 @@
+# cPanel / Apache: SPA (React Router) support and correct MIME types
+# Upload this with your dist folder so all routes serve index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Don't rewrite files or directories that exist
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Send everything else to index.html for client-side routing
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# Ensure JavaScript modules are served with correct MIME type (some cPanel hosts misconfigure this)
+<IfModule mod_mime.c>
+  AddType application/javascript js mjs
+</IfModule>

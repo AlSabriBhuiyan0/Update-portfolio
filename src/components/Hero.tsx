@@ -6,19 +6,19 @@ import { SplineScene } from "@/components/ui/spline";
 import { trackEvent } from "@/lib/analytics";
 
 const capabilities = [
-  "ROS/ROS2",
-  "Perception",
-  "Mapping",
-  "Navigation",
-  "Point Clouds",
-  "Real Deployment",
+  "Data Science",
+  "Machine Learning",
+  "Full-stack",
+  "React",
+  "Python",
+  "Web Apps",
 ];
 
 const rotatingTitles = [
-  "ROS Developer",
-  "Perception Engineer",
-  "Navigation Systems Specialist",
-  "Robotics Software Engineer",
+  "Full-stack Developer",
+  "Data Scientist",
+  "Web Developer",
+  "ML Engineer",
 ];
 
 /**
@@ -76,7 +76,7 @@ export function Hero() {
     trackEvent('download', 'Resume', 'Download Resume Button');
     const link = document.createElement("a");
     link.href = "/resume.pdf";
-    link.download = "Sutharsan_Resume.pdf";
+    link.download = "Alsabribhuiyan_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -100,7 +100,7 @@ export function Hero() {
                 transition={{ duration: 0.15 }}
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-white mb-3">
-                  Sutharsan
+                  Al Sabri Bhuiyan (Sunny)
                 </h1>
                 <div className="h-12 md:h-14 lg:h-16 mb-6 flex items-center">
                   <AnimatePresence mode="wait">
@@ -118,7 +118,7 @@ export function Hero() {
                 </div>
                 
                 <p className="mt-4 text-lg md:text-xl text-neutral-300 max-w-2xl mb-8">
-                  I build and deploy real world autonomous robots using <strong>ROS2, nav2, and ros2_control</strong> working hands on with perception, mapping, navigation, and robot hardware.
+                  Data Scientist & Full-stack Developer — turning complex data into actionable insights and building user-friendly web applications with <strong>React, Next.js, Node.js</strong> and ML tools.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-12">

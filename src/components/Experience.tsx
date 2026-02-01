@@ -17,36 +17,22 @@ const staggerItem = {
 
 const experiences = [
   {
-    title: "Junior ROS Developer",
-    company: "Spotless AI",
-    period: "Mar 2025 – Present",
+    title: "Data Scientist & Full-stack Developer",
+    company: "Freelance / Projects",
+    period: "3+ years of experience",
     bullets: [
-      "Developing and maintaining **ROS2-based autonomous mobile robots** for real-world deployment",
-      "Implemented autonomous navigation using **nav2**, integrating **SBPL (global planner)** and **DWB (local planner)**",
-      "Integrated robot hardware using **ros2_control**, managing controllers and actuator interfaces",
-      "Built perception pipelines using **OpenCV, YOLO, Python, and PointCloud2**",
-      "Implemented **RGB + Depth sensor synchronization** and point cloud filtering",
-      "Developed **occupancy grid maps, semantic grids, and Gmapping-based workflows**",
-      "Integrated **LiDAR and RGB-D sensors** for mapping, localization, and room boundary detection",
-      "Improved navigation reliability using **edge & corner detection, map modification, and smoothing**",
-      "Debugged system-level issues including **tf2 tree mismatches, sensor noise, planner failures, timing issues, and CPU overuse**",
-      "Maintained codebases using **Git & GitHub**, following modular ROS2 node design",
-    ],
-  },
-  {
-    title: "ROS Trainee",
-    company: "Logical Minds IT Services",
-    period: "Dec 2024 – Mar 2025",
-    bullets: [
-      "Trained in **ROS/ROS2 fundamentals**, perception, mapping, navigation, and simulation",
-      "Contributed to live robotics projects in collaboration with **Spotless AI**, leading to a full-time transition",
+      "Turning complex data into actionable insights using **Python, TensorFlow, PyTorch, scikit-learn, and Keras**",
+      "Building user-friendly web applications with **React, Next.js, Node.js** and modern front-end technologies",
+      "Developing **real-time collaborative tools** and **resume builders** with live preview and PDF generation",
+      "Data analysis and visualization with **Power BI, Tableau, Excel, and Deepnote**",
+      "Working with **MongoDB, MariaDB** and REST APIs for full-stack projects",
+      "Automation and testing with **Selenium** and continuous learning in **Machine Learning** and **Deep Learning**",
     ],
   },
 ];
 
 /**
  * Experience component displays work experience in an animated timeline format.
- * Features a vertical timeline with animated entries on scroll.
  */
 export function Experience() {
   const prefersReducedMotion = useReducedMotion();

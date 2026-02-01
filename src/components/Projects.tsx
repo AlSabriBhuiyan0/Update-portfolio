@@ -4,87 +4,65 @@ import { ProjectCard } from "./ProjectCard";
 
 const projects = [
   {
-    title: "Krishi Bot – E-Yantra Robotics Competition",
-    summary: "Autonomous agricultural robot with arm manipulation and computer vision, finalist in national competition.",
+    title: "Naureen Food and Beverage Limited",
+    summary: "A website for Naureen Food & Beverage Limited. Built using HTML, CSS and JavaScript.",
     details: [
-      "Implemented arm manipulation control for pick-and-place agricultural tasks",
-      "Developed computer vision pipelines for crop and object recognition",
-      "Wrote robot control code in Python integrated with ROS",
-      "Collaborated on system integration between perception, planning, and actuation",
+      "Corporate website for Naureen Food & Beverage Limited",
+      "Clean, responsive layout with HTML5, CSS, and vanilla JavaScript",
+      "User-friendly navigation and contact information",
     ],
-    constraints: [
-      "Limited compute resources on embedded hardware",
-      "Variable lighting conditions in agricultural environments",
-      "Timing constraints for competition task completion",
-    ],
-    stack: ["ROS", "Python", "OpenCV", "Embedded Systems"],
-    outcome: "Finalist in E-Yantra Robotics Competition 2022-2023.",
-    imageUrl: "/project-krishi-bot.jpg", // Add your project image to public folder
-    githubUrl: "https://github.com/sutharsan-311/krishi-bot", // Update with your actual GitHub repo
+    constraints: [],
+    stack: ["HTML5", "CSS", "JavaScript"],
+    outcome: "Live website for the company.",
+    imageUrl: "/placeholder.svg",
+    githubUrl: "#",
   },
   {
-    title: "Medical Drone",
-    summary: "Emergency response drone with computer vision for person detection and localization.",
+    title: "LaTeX-Based CV Builder",
+    summary: "A web-based resume builder that allows users to create and customize resumes using LaTeX templates. Features live preview and PDF generation, built with React, TypeScript, and styled-components. Integrated Axios for API communication.",
     details: [
-      "Implemented image segmentation pipelines using OpenCV and Python",
-      "Developed object recognition system for emergency response scenarios",
-      "Integrated vision system with drone navigation controls",
+      "Live preview and PDF generation from LaTeX templates",
+      "React, TypeScript, and styled-components for UI",
+      "Axios for API communication and backend integration",
     ],
-    constraints: [
-      "Real-time processing requirements for emergency response",
-      "Variable outdoor lighting and weather conditions",
-      "Weight and power constraints on drone platform",
-    ],
-    stack: ["Python", "OpenCV", "Image Segmentation", "Drone Systems"],
-    outcome: "Functional prototype demonstrating vision-guided emergency response capabilities.",
-    imageUrl: "/project-medical-drone.jpg", // Add your project image to public folder
-    githubUrl: "https://github.com/sutharsan-311/medical-drone", // Update with your actual GitHub repo
+    constraints: [],
+    stack: ["React", "TypeScript", "styled-components", "Axios", "API"],
+    outcome: "Functional resume builder with professional LaTeX output.",
+    imageUrl: "/placeholder.svg",
+    githubUrl: "#",
   },
   {
-    title: "Flipkart GRID 2.0 – Computer Vision Challenge",
-    summary: "Image segmentation system for e-commerce product recognition and classification.",
+    title: "Portfolio",
+    summary: "A personal portfolio website showcasing skills, projects, and experiences as a Web Developer and Data Scientist. The site features a clean and modern design, making it easy for visitors to navigate and view my work.",
     details: [
-      "Developed image processing pipelines for product segmentation",
-      "Implemented object recognition algorithms using OpenCV",
-      "Applied computer vision techniques for product classification tasks",
+      "Clean, modern design with responsive layout",
+      "Sections for About, Projects, Skills, and Contact",
+      "Built with React and Tailwind CSS for performance and maintainability",
     ],
-    constraints: [
-      "Large variety of product categories requiring robust classification",
-      "Variable image quality and backgrounds",
-      "Accuracy requirements for production-level recognition",
-    ],
-    stack: ["Python", "OpenCV", "Image Segmentation", "Computer Vision"],
-    outcome: "Short-listed for Level 2 in Flipkart GRID 2.0 competition.",
-    imageUrl: "/project-flipkart-grid.jpg", // Add your project image to public folder
-    githubUrl: "https://github.com/sutharsan-311/flipkart-grid", // Update with your actual GitHub repo
+    constraints: [],
+    stack: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+    outcome: "Personal portfolio site for showcasing work and skills.",
+    imageUrl: "/placeholder.svg",
+    githubUrl: "#",
   },
   {
-    title: "LabConnect – Role-Based Collaboration Platform",
-    summary: "Full-stack web application for managing lab registrations, attendance, and collaboration within a Product Innovation Center, enabling structured interaction between students, faculty, industry experts, and administrators.",
+    title: "Weather App",
+    summary: "WeatherAppbyAlsunny is a responsive web application built with React that allows users to view the weather forecast for a specific location. The app fetches weather data from WeatherAPI.com and presents it in a user-friendly interface. Styled using Bootstrap and custom CSS.",
     details: [
-      "Contributed to UI/UX design and layout, focusing on usability and role clarity",
-      "Designed intuitive dashboards for Students, Faculty, Industry Experts, and Admins",
-      "Structured user flows for lab registration, request handling, and discussion forums",
-      "Collaborated with backend and API teams to align UI behavior with system logic",
-      "Implemented role-based access control for Admin, Faculty, Student, and Industry users",
-      "Developed lab creation, event management, and full CRUD operations (Admin)",
-      "Built attendance management and request approval workflows (Faculty)",
-      "Created discussion forum enabling cross-role collaboration using REST APIs",
+      "Fetches weather data from WeatherAPI.com",
+      "Responsive design with Bootstrap and custom CSS",
+      "User-friendly interface for location-based weather forecast",
     ],
-    constraints: [
-      "Multi-role system requiring clear permission boundaries",
-      "Real-time interaction requirements for collaboration features",
-      "Complex user flows across different user types",
-    ],
-    stack: ["ReactJS", "Spring Boot", "MySQL", "Axios", "Ngrok", "CSS"],
-    outcome: "While my primary focus is robotics, this project reflects my ability to collaborate across software domains, design usable systems, and work in multi-disciplinary teams—skills that directly translate to complex robotics systems.",
-    githubUrl: "https://github.com/RAVIVARMA0707/Lab-Connect-Role-Based-Collaboration-Platform",
+    constraints: [],
+    stack: ["HTML", "CSS", "JavaScript", "React", "Bootstrap", "Weather API"],
+    outcome: "Functional weather app with live API integration.",
+    imageUrl: "/placeholder.svg",
+    githubUrl: "#",
   },
 ];
 
 /**
- * Projects component - Displays featured robotics projects in an accordion layout.
- * Each project can be expanded to show implementation details, constraints, tech stack, and outcomes.
+ * Projects component - Displays featured projects in an accordion layout.
  */
 export function Projects() {
   return (
@@ -97,10 +75,10 @@ export function Projects() {
           transition={{ duration: 0.15 }}
         >
           <h2 id="projects-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Featured Work
+            Projects
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            A selection of robotics projects showcasing autonomous systems, perception, and intelligent solutions, along with additional software projects demonstrating cross-domain collaboration capabilities
+            A selection of web development and data science projects — from corporate sites and resume builders to weather apps and portfolios.
           </p>
           
           <motion.div

@@ -7,23 +7,23 @@ import { Map, Scan, Settings, Wrench, Target, BookOpen, Heart, Code2 } from "luc
 const features = [
   {
     icon: Map,
-    title: "Nav2 + Tuning",
-    description: "Autonomous navigation with SBPL and DWB planners, costmap optimization, and real-world path planning.",
+    title: "Data Science & ML",
+    description: "Turning complex data into actionable insights with TensorFlow, PyTorch, scikit-learn, and Keras for machine learning and deep learning.",
   },
   {
     icon: Scan,
-    title: "Perception (RGB-D + LiDAR)",
-    description: "Sensor fusion, point cloud processing, object detection with YOLO, and semantic mapping pipelines.",
+    title: "Full-stack Development",
+    description: "Building user-friendly web applications with React, Next.js, Node.js, and modern front-end and back-end technologies.",
   },
   {
     icon: Settings,
-    title: "ros2_control + Hardware",
-    description: "Hardware interfacing via ros2_control, actuator control, sensor integration, and real-time system management.",
+    title: "Analytics & Visualization",
+    description: "Power BI, Tableau, Excel, and Deepnote for data analysis, dashboards, and reporting.",
   },
   {
     icon: Wrench,
-    title: "Deployment Debugging",
-    description: "tf2 tree debugging, sensor noise handling, planner failure recovery, timing issues, and CPU optimization.",
+    title: "End-to-end Projects",
+    description: "From real-time collaborative tools to resume builders — delivering complete, production-ready solutions.",
   },
 ];
 
@@ -109,7 +109,7 @@ export function About() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
             <div className="lg:col-span-2 space-y-6">
               <p className="text-lg text-foreground leading-relaxed">
-                I'm a Junior ROS2 Developer working on <strong>autonomous mobile robots</strong> in production environments. My work sits at the intersection of <strong>robot perception, navigation, and hardware integration</strong>, where theory meets noisy sensors and real world constraints.
+                Hello, I'm <strong>Al Sabri Bhuiyan (Sunny)</strong>. I'm a <strong>Data Scientist</strong> with a passion for turning complex data into actionable insights and building user-friendly applications. With <strong>3 years of experience</strong>, I bring a combination of analytical thinking and technical expertise. My goal is to create value by leveraging data and technology to solve real-world problems.
               </p>
               
               <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
@@ -119,7 +119,7 @@ export function About() {
               </div>
               
               <p className="text-foreground leading-relaxed">
-                I've built systems using <strong>Nav2 for autonomous navigation</strong>, <strong>ros2_control for hardware interfacing</strong>, and perception pipelines combining <strong>LiDAR, RGB-D cameras, OpenCV, YOLO, and point clouds</strong>. I'm comfortable debugging tf2 trees, tuning planners, optimizing CPU usage, and shipping code that runs on real robots not just simulations.
+                I'm also a <strong>Web Developer</strong> with experience in front-end and back-end technologies. I've worked with <strong>React, Next.js, Node.js</strong>, and I enjoy solving complex challenges to build dynamic, user-friendly web applications. I'm constantly exploring new tech and staying up-to-date with the latest trends in the field.
               </p>
               
               <div className="flex items-center gap-3 text-muted-foreground my-4" aria-hidden="true">
@@ -130,7 +130,7 @@ export function About() {
               
               <div className="bg-primary/5 border-l-4 border-primary p-4 rounded-r-lg">
                 <p className="text-foreground leading-relaxed italic">
-                I care about systems that work reliably, not demos that look good once.
+                My portfolio includes projects like real-time collaborative tools and resume builders. I'm always looking for new opportunities to grow and collaborate with others in the tech space. Feel free to reach out!
               </p>
               </div>
               
@@ -144,10 +144,10 @@ export function About() {
                 <div>
                   <h3 className="text-base font-semibold text-foreground mb-2 flex items-center gap-2">
                     <Target className="w-4 h-4 text-primary" aria-hidden="true" />
-                    What Drives Me
+                    What I Do
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    I'm passionate about building robots that work in the real world. The challenge of making autonomous systems reliable under unpredictable conditions—sensor noise, hardware failures, environmental changes—is what keeps me motivated. Every bug fixed and every optimization made brings us closer to robots that truly help people.
+                    I combine data science with full-stack development to deliver end-to-end solutions — from data pipelines and ML models to responsive web apps. I care about clean code, clear communication, and products that users actually enjoy using.
                   </p>
                 </div>
                 
@@ -157,7 +157,7 @@ export function About() {
                     My Approach
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    I believe in iterative development, thorough testing, and learning from failures. I start with simulations, validate in controlled environments, then deploy to real robots. Debugging on actual hardware teaches you things simulations never can. I document everything, share knowledge with the team, and always ask "what could go wrong?"
+                    I believe in iterative development, data-driven decisions, and continuous learning. I document my work, share knowledge, and stay curious about new tools and methods in data science and web development.
                   </p>
                 </div>
               </div>
@@ -172,13 +172,13 @@ export function About() {
                   </CardHeader>
                   <CardContent className="flex-grow space-y-2">
                     <h3 className="font-medium text-foreground">
-                      B.E. Mechatronics Engineering
+                      Education
                     </h3>
                     <p className="text-sm text-muted-foreground">
-                      Bannari Amman Institute of Technology
+                      Data Science & Web Development
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      2021 – 2025
+                      Self-taught & continuous learning
                     </p>
                   </CardContent>
                 </Card>

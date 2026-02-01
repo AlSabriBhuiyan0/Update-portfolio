@@ -14,17 +14,19 @@ export function Resume() {
           className="max-w-xl"
         >
           <h2 className="text-sm font-mono text-muted-foreground uppercase tracking-wider mb-4">
-            Resume
+            Resume / CV
           </h2>
           
           <p className="text-muted-foreground mb-6">
-            Download my full resume for detailed work history and technical skills.
+            Download my full resume (CV) for detailed work history and technical skills.
           </p>
 
-          <Button variant="outline" size="lg" className="font-medium">
-            <Download className="w-4 h-4 mr-2" />
-            Download Resume (PDF)
-          </Button>
+          <a href="/resume.pdf" download="Alsabribhuiyan_Resume.pdf">
+            <Button variant="outline" size="lg" className="font-medium">
+              <Download className="w-4 h-4 mr-2" />
+              Download Resume (PDF)
+            </Button>
+          </a>
 
           <p className="text-sm text-muted-foreground mt-4">
             You can also ask the AI assistant about this resume.

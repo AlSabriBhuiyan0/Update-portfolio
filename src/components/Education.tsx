@@ -17,13 +17,13 @@ export function Education() {
           
           <div className="space-y-2">
             <h3 className="text-lg font-medium text-foreground">
-              B.E. Mechatronics
+              Data Science & Web Development
             </h3>
             <p className="text-muted-foreground">
-              Bannari Amman Institute of Technology
+              Self-taught and continuous learning
             </p>
             <p className="text-sm text-muted-foreground">
-              2021 – April 2025 · CGPA: 7.93
+              Focus on Python, React, ML, and full-stack technologies
             </p>
           </div>
         </motion.div>

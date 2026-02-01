@@ -139,7 +139,7 @@ export function Header() {
               ))}
               <a
                 href="/resume.pdf"
-                download="Sutharsan_Resume.pdf"
+                download="Alsabribhuiyan_Resume.pdf"
                 onClick={() => setIsMenuOpen(false)}
                 className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-foreground hover:bg-white/10 mt-2"
               >
@@ -198,7 +198,7 @@ export function Header() {
           })}
           <a
             href="/resume.pdf"
-            download="Sutharsan_Resume.pdf"
+            download="Alsabribhuiyan_Resume.pdf"
             aria-label="Download resume"
             className={cn(
               "relative cursor-pointer text-sm font-semibold px-4 py-2 rounded-full transition-colors",

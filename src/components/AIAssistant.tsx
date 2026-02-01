@@ -10,42 +10,36 @@ interface Message {
 
 const initialMessage: Message = {
   role: "assistant",
-  content: "I answer questions using my resume, projects, and professional experience in robotics and ROS development.",
+  content: "I answer questions using my resume, projects, and professional experience in data science and full-stack web development.",
 };
 
 // Mock responses for demo - would be replaced with actual AI backend
 const getResponse = (question: string): string => {
   const q = question.toLowerCase();
   
-  if (q.includes("ros") || q.includes("experience") || q.includes("work")) {
-    return "I work as a ROS Developer at Spotless AI, building perception, mapping, and navigation systems. I develop ROS nodes for sensor synchronization, point cloud processing, occupancy grid updates, and semantic mapping. I also integrate navigation stacks using planners like Move Base, SBPL, and DWB.";
+  if (q.includes("experience") || q.includes("work")) {
+    return "I'm a Data Scientist and Full-stack Developer with 3+ years of experience. I turn complex data into actionable insights and build user-friendly web apps with React, Next.js, Node.js, Python, TensorFlow, PyTorch, and tools like Power BI and Tableau.";
   }
-  if (q.includes("navigation") || q.includes("nav") || q.includes("planner")) {
-    return "I integrate navigation stacks using Move Base, SBPL, and DWB planners for autonomous robot movement. This includes publishing costmaps, handling real-time replanning, and debugging planner failures under dynamic conditions.";
+  if (q.includes("data science") || q.includes("machine learning") || q.includes("ml")) {
+    return "I work with TensorFlow, PyTorch, scikit-learn, Keras, and Deep Learning for data analysis and ML models. I also use Power BI, Tableau, Excel, and Deepnote for visualization and reporting.";
   }
-  if (q.includes("mapping") || q.includes("slam") || q.includes("localization")) {
-    return "I build mapping pipelines including Occupancy Grid Maps, Gmapping, Semantic Grids, and edge/corner detection. I also work on map modification and smoothing for deployed systems.";
+  if (q.includes("web") || q.includes("react") || q.includes("full-stack")) {
+    return "I build web applications with React, Next.js, Node.js, HTML, CSS, and JavaScript. My projects include resume builders with live preview and PDF generation, weather apps, and portfolio sites.";
   }
-  if (q.includes("perception") || q.includes("vision") || q.includes("camera") || q.includes("lidar")) {
-    return "I develop perception pipelines using OpenCV, YOLO, and point cloud data. My work includes RGB + Depth synchronization, real-time point cloud processing, object detection, and image segmentation for robot systems.";
+  if (q.includes("project")) {
+    return "Key projects: Naureen Food and Beverage Limited (HTML/CSS/JS), LaTeX-Based CV Builder (React, TypeScript, styled-components, Axios), Portfolio (React, Next.js, Tailwind), and Weather App (React, WeatherAPI, Bootstrap).";
   }
-  if (q.includes("project") || q.includes("competition")) {
-    return "Key projects include my work at Spotless AI (deployed ROS systems), Krishi Bot (E-Yantra finalist, arm manipulation + vision), Medical Drone (emergency response CV), and Flipkart GRID 2.0 (image segmentation, Level 2 shortlist).";
+  if (q.includes("language") || q.includes("programming") || q.includes("python") || q.includes("skill")) {
+    return "I use Java, Python, C, JavaScript for programming. For data and ML: TensorFlow, scikit-learn, Keras, PyTorch. For web: HTML, CSS, React, Next.js. Tools: MongoDB, MariaDB, PowerBI, Tableau, Excel, Deepnote, Selenium, GitHub.";
   }
-  if (q.includes("language") || q.includes("programming") || q.includes("python") || q.includes("c++") || q.includes("skill")) {
-    return "Primary languages: Python and C++ for ROS development. I also work with OpenCV, YOLO, LiDAR processing, Git, MATLAB, and tools like Visual Studio Code and Ubuntu. Simulation tools include Gazebo and Blender.";
-  }
-  if (q.includes("education") || q.includes("degree") || q.includes("university") || q.includes("college")) {
-    return "B.E. Mechatronics from Bannari Amman Institute of Technology, graduating April 2025. CGPA: 7.93 (till 5th semester).";
-  }
-  if (q.includes("achievement") || q.includes("award") || q.includes("hackathon")) {
-    return "Smart India Hackathon Winner (2021-2022), Ignite Best Project Award Winner, BRICS Robotics Competition Runner-up, E-Yantra Robotics Competition Finalist, and Flipkart GRID 2.0 Level 2 shortlist.";
+  if (q.includes("education") || q.includes("degree")) {
+    return "I focus on self-taught and continuous learning in Data Science and Web Development — Python, React, ML, and full-stack technologies.";
   }
   if (q.includes("contact") || q.includes("email") || q.includes("reach")) {
-    return "You can reach me via email at sutharsanmail311@gmail.com or call +91 8438536404. Links are in the Contact section below.";
+    return "You can reach me at contact@alsabribhuiyan.xyz. Links to GitHub and LinkedIn are in the Contact section below.";
   }
   
-  return "I can answer questions about my ROS development experience at Spotless AI, perception and mapping work, competition projects, technical skills, and education. What would you like to know?";
+  return "I can answer questions about my data science and full-stack experience, projects (resume builder, weather app, portfolio), technical skills, and how to get in touch. What would you like to know?";
 };
 
 export function AIAssistant() {

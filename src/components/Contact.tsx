@@ -11,27 +11,27 @@ import { trackEvent } from "@/lib/analytics";
 const links = [
   {
     label: "Email",
-    href: "mailto:sutharsanmail311@gmail.com",
+    href: "mailto:contact@alsabribhuiyan.xyz",
     icon: Mail,
-    value: "sutharsanmail311@gmail.com",
+    value: "contact@alsabribhuiyan.xyz",
   },
   {
     label: "GitHub",
-    href: "https://github.com/sutharsan-311",
+    href: "https://github.com/AlSabriBhuiyan0",
     icon: Github,
-    value: "github.com/sutharsan-311",
+    value: "github.com/AlSabriBhuiyan0",
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/sutharsan",
+    href: "https://linkedin.com/in/alsabribhuiyan",
     icon: Linkedin,
-    value: "linkedin.com/in/sutharsan",
+    value: "linkedin.com/in/alsabribhuiyan",
   },
   {
     label: "Location",
     href: "#",
     icon: MapPin,
-    value: "Coimbatore, India",
+    value: "Available remotely",
   },
 ];
 
@@ -138,7 +138,7 @@ export function Contact() {
                   <CardHeader className="flex-shrink-0">
                     <CardTitle className="leading-tight min-h-[2.5rem]">Let's Chat</CardTitle>
                     <CardDescription>
-                      Whether you have questions about robotics, want to collaborate, or just want to connect — I'm here to help.
+                      Whether you have questions about data science, web development, or want to collaborate — I'm here to help.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow space-y-4">
@@ -249,7 +249,7 @@ export function Contact() {
                       </p>
                     )}
                     <p className="text-xs text-muted-foreground text-center">
-                      By submitting, you agree to a friendly conversation about robotics 
+                      Feel free to reach out for projects or collaboration
                     </p>
                   </form>
                 </CardContent>

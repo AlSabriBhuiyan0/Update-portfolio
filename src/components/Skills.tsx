@@ -2,73 +2,57 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const skillCategories = [
   {
-    title: "Robotics & ROS",
-    skills: [
-      "ROS2",
-      "ROS1",
-      "nav2",
-      "ros2_control",
-      "tf2",
-      "MoveIt",
-      "Gmapping",
-      "SLAM",
-    ],
-  },
-  {
-    title: "Perception",
-    skills: [
-      "OpenCV",
-      "YOLO",
-      "PointCloud2",
-      "Image Segmentation",
-      "Object Detection",
-      "RGB-D Fusion",
-    ],
-  },
-  {
-    title: "Navigation",
-    skills: [
-      "SBPL Planner",
-      "DWB Planner",
-      "Path Planning",
-      "Localization",
-      "AMCL",
-      "Costmap Tuning",
-    ],
-  },
-  {
     title: "Programming",
     skills: [
+      "Java",
       "Python",
-      "C++",
-      "Bash",
-      "CMake",
+      "C",
+      "JavaScript",
     ],
   },
   {
-    title: "Tools",
+    title: "Data & ML",
     skills: [
-      "Ubuntu",
-      "Gazebo",
-      "RViz2",
-      "Git",
-      "Docker",
+      "TensorFlow",
+      "scikit-learn",
+      "Keras",
+      "PyTorch",
+      "Deep Learning",
+      "Machine Learning",
     ],
   },
   {
-    title: "Systems",
+    title: "Web & Front-end",
     skills: [
-      "Hardware Integration",
-      "Real-time Systems",
-      "System Debugging",
-      "Performance Optimization",
+      "HTML",
+      "CSS",
+      "React",
+      "Next.js",
+    ],
+  },
+  {
+    title: "Databases & Tools",
+    skills: [
+      "MongoDB",
+      "MariaDB",
+      "PowerBI",
+      "Tableau",
+      "Excel",
+      "Deepnote",
+    ],
+  },
+  {
+    title: "Automation & Other",
+    skills: [
+      "Selenium",
+      "GitHub",
     ],
   },
 ];
 
 /**
  * Skills component - Displays technical stack organized by categories.
- * Shows skills in a grid layout with hover effects and organized by domain (Robotics, Perception, Navigation, etc.).
+ * Shows skills in a grid layout with hover effects and organized by domain.
  */
 export function Skills() {
   const prefersReducedMotion = useReducedMotion();
@@ -83,10 +67,10 @@ export function Skills() {
           transition={{ duration: 0.15 }}
         >
           <h2 id="skills-heading" className="text-3xl md:text-4xl font-semibold text-foreground mb-4">
-            Technical Stack
+            Skills
           </h2>
           <p className="text-muted-foreground mb-12 max-w-2xl">
-            A comprehensive toolkit for building intelligent robotic systems
+            A comprehensive toolkit for data science, machine learning, and web development
           </p>
           
           <motion.div 

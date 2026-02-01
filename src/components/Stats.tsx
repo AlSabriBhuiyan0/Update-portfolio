@@ -5,27 +5,27 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   {
     icon: Briefcase,
-    value: "2+",
+    value: "3+",
     label: "Years Experience",
-    description: "Building autonomous systems",
+    description: "Data Science & Web Development",
   },
   {
     icon: Code,
-    value: "10+",
+    value: "4+",
     label: "Projects Completed",
-    description: "Robotics & CV projects",
+    description: "Web apps, resume builders, portfolios",
   },
   {
     icon: Rocket,
-    value: "100%",
-    label: "Real Deployment",
-    description: "Production-ready systems",
+    value: "Full-stack",
+    label: "Developer",
+    description: "React, Next.js, Node.js",
   },
   {
     icon: Award,
-    value: "Finalist",
-    label: "E-Yantra Competition",
-    description: "National robotics competition",
+    value: "ML & Data",
+    label: "Data Scientist",
+    description: "TensorFlow, PyTorch, scikit-learn",
   },
 ];
 

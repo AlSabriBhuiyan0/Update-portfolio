@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 const socialLinks = [
   {
     name: "GitHub",
-    url: "https://github.com/sutharsan-311",
+    url: "https://github.com/AlSabriBhuiyan0",
     icon: Github,
   },
   {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/sutharsan",
+    url: "https://linkedin.com/in/alsabribhuiyan",
     icon: Linkedin,
   },
   {
     name: "Email",
-    url: "mailto:sutharsanmail311@gmail.com",
+    url: "mailto:contact@alsabribhuiyan.xyz",
     icon: Mail,
   },
 ];
@@ -48,9 +48,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Sutharsan</h3>
+            <h3 className="text-lg font-semibold text-foreground">Al Sabri Bhuiyan (Sunny)</h3>
             <p className="text-sm text-muted-foreground">
-              Building reliable autonomous systems using ROS, perception pipelines, and AI-driven decision layers.
+              Data Analyst & Web Developer — Turning data into insights and code into solutions.
             </p>
           </div>
 
@@ -100,10 +100,10 @@ export function Footer() {
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © {currentYear} Sutharsan. All rights reserved.
+              © {currentYear} Al Sabri Bhuiyan (Sunny). All rights reserved.
             </p>
             <p className="text-sm text-muted-foreground">
-              Built with intent. Focused on reliability.
+              Portfolio · Data Science & Web Development
             </p>
           </div>
         </div>

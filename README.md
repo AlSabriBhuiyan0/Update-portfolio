@@ -1,73 +1,95 @@
-# Welcome to My portfolio
+# Al Sabri Bhuiyan (Sunny) — Portfolio
+
+Personal portfolio website: **Data Analyst & Web Developer** — turning data into insights and code into solutions.
+
+**Live site**: [alsabribhuiyan.xyz](https://alsabribhuiyan.xyz)
+
+---
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+- **Stack**: Vite, TypeScript, React, shadcn/ui, Tailwind CSS
+- **Deployment**: cPanel (static build)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## How to run locally
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+You need **Node.js** and **npm** (or use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
+cd system-focus
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open the URL shown in the terminal (e.g. `http://localhost:5173`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## How to build for production
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+npm run build
+```
 
-## What technologies are used for this project?
+Output is in the **`dist`** folder (static HTML, CSS, JS). This folder is what you upload to cPanel.
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deploy with cPanel
 
-## How can I deploy this project?
+This project is deployed on **cPanel** (not Lovable/Vercel). Steps:
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+1. **Build the project locally**
+   ```sh
+   npm run build
+   ```
 
-## Can I connect a custom domain to my Lovable project?
+2. **Upload the `dist` folder**
+   - In cPanel, open **File Manager** (or use FTP/SFTP).
+   - Go to the directory that will serve your site (e.g. `public_html` for the main domain, or a subfolder for a subdomain).
 
-Yes, you can!
+3. **Upload contents of `dist`**
+   - Upload **all files and folders inside `dist`** (e.g. `index.html`, `assets/`, etc.) into that directory.
+   - Do **not** upload the empty `dist` folder itself — only its contents, so that `index.html` is at the document root.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+4. **Custom domain (e.g. alsabribhuiyan.xyz)**
+   - In cPanel: **Domains** or **Addon Domains** → add or point your domain to the same directory where you uploaded the `dist` contents.
+   - Ensure the document root for that domain is the folder containing `index.html`.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+5. **Optional: resume and assets**
+   - If you use `/resume.pdf`, place `resume.pdf` in the same directory as `index.html` (or in the same path as in `public/` so URLs still work).
+
+After updating the site: run `npm run build` again and re-upload the new `dist` contents to the same cPanel directory.
+
+---
+
+## Editing the code
+
+- **Local IDE**: Clone the repo, edit, then run `npm run build` and upload the new `dist` to cPanel.
+- **GitHub**: Edit files in the GitHub web editor, then pull locally, build, and upload to cPanel.
+- **GitHub Codespaces**: Open the repo in Codespaces, edit, build, and download/upload the `dist` folder to cPanel.
+
+---
+
+## Technologies
+
+- **Vite** — build tool and dev server  
+- **TypeScript** — type-safe JavaScript  
+- **React** — UI components  
+- **shadcn/ui** — accessible UI components  
+- **Tailwind CSS** — styling  
+- **Framer Motion** — animations  
+
+---
+
+## Custom domain
+
+The site uses the custom domain **alsabribhuiyan.xyz**. Domain and SSL are configured in cPanel (Domains, SSL/TLS). After pointing the domain to your hosting, use cPanel’s SSL option (e.g. Let’s Encrypt) to enable HTTPS.

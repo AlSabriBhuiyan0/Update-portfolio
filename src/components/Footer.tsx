@@ -24,6 +24,7 @@ const quickLinks = [
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
+  { name: "Hire Me", href: "#hire" },
   { name: "Contact", href: "#contact" },
 ];
 
